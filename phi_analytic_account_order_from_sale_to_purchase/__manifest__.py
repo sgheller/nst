@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Phidias : MTPO : Analytic account from sale order to purchase order",
+    'name': "Phidias : Analytic account from sale order to purchase order",
 
     'summary': """
-        Phidias : MTPO : Analytic account from sale order to purchase order
+        Phidias : Analytic account from sale order to purchase order
         """,
 
     'description': """
-        Phidias : MTPO : Analytic account from sale order to purchase order
+        Phidias : Analytic account from sale order to purchase order
     """,
 
     'author': "Phidias",
