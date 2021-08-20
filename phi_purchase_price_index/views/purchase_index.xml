@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+
+        <record id="phi_purchase_price_index.purchase_index_form" model="ir.ui.view">
+            <field name="name">phi_purchase_price_index purchase_index form</field>
+            <field name="model">phi_purchase_price_index.purchase.index</field>
+            <field name="arch" type="xml">
+                <form string="Indices Achat">
+                    <header>
+                      <field name="state" options="{'clickable': '0'}" widget="statusbar"/>
+                      <button string="Appliquer" type="object" class="oe_highlight" name="action_apply" attrs="{'invisible': [('state', '!=', 'draft')]}" confirm="Désirez vous appliquer ce nouvel indices sur les prix des articles ?"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="date_from"  attrs="{'readonly': [('state', '=', 'done')]}" />
+                            <field name="index_meps" attrs="{'readonly': [('state', '=', 'done')]}" />
+                            <field name="index_mo" attrs="{'readonly': [('state', '=', 'done')]}" />
+                            <field name="index_lme" attrs="{'readonly': [('state', '=', 'done')]}" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="phi_purchase_price_index.purchase_index_list">
+            <field name="name">phi_purchase_price_index purchase index.list</field>
+            <field name="model">phi_purchase_price_index.purchase.index</field>
+            <field name="arch" type="xml">
+                <tree string="Indices Achat">
+                    <field name="date_from" attrs="{'readonly': [('state', '=', 'done')]}" />
+                    <field name="index_meps" attrs="{'readonly': [('state', '=', 'done')]}" />
+                    <field name="index_mo" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                    <field name="index_lme" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="phi_purchase_price_index.purchase_index_action_window">
+            <field name="name">Indices Achat</field>
+            <field name="res_model">phi_purchase_price_index.purchase.index</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Créer un premier indice</p>
+            </field>
+        </record>
+
+        <menuitem name="Indices Achat" id="phi_purchase_price_index.purchase_index_menu" parent="purchase.menu_purchase_config"
+                  action="phi_purchase_price_index.purchase_index_action_window"/>
+    </data>
+</odoo>
