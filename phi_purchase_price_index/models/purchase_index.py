@@ -12,9 +12,9 @@ class PurchaseIndex(models.Model):
     _rec_name = 'date_from'
 
     date_from = fields.Date(string="Date", required=True)
-    index_meps = fields.Integer(string="MEPS", help="Indice matière premières", default=0)
-    index_mo = fields.Integer(string="MO", help="Indice main d'oeuvre", default=0)
-    index_lme = fields.Integer(string="LME", help="Indice traitement de surface", default=0)
+    index_meps = fields.Integer(string="MEPS", help="Indice matière premières", default=0, required=True)
+    index_mo = fields.Integer(string="MO", help="Indice main d'oeuvre", default=0, required=True)
+    index_lme = fields.Integer(string="LME", help="Indice traitement de surface", default=0, required=True)
 
     state = fields.Selection([('draft', 'Brouillon'), ('done', 'Traité')], 'Statut', readonly=True, copy=False, default='draft', required=True)
 
@@ -28,13 +28,14 @@ class PurchaseIndex(models.Model):
         if len(index_draft) > 0:
             raise UserError(_('Il existe un autre index en brouillon, vous devez le valider avant de créer un nouvel index.'))
         current_index = self._get_current_index()
-        if current_index.date_from > datetime.strptime(vals["date_from"], '%Y-%m-%d').date():
+        if current_index.date_from and current_index.date_from > datetime.strptime(vals["date_from"], '%Y-%m-%d').date():
             raise UserError(_("Vous devez créer un index avec une date supérieure à l'index en cours % s" % current_index.date_from))
         return super(PurchaseIndex, self).create(vals)
 
     def unlink(self):
-        if self.state == 'done':
-            raise UserError(_('Vous ne pouvez pas supprimer un index validé'))
+        for index in self:
+            if index.state == 'done':
+                raise UserError(_('Vous ne pouvez pas supprimer un index validé'))
         return super(PurchaseIndex, self).unlink()
 
     def _select_seller_for_index(self, product_id, date):
@@ -45,8 +46,6 @@ class PurchaseIndex(models.Model):
             if seller.date_start and seller.date_start > date:
                 continue
             if seller.date_end and seller.date_end < date:
-                continue
-            if seller.product_id and seller.product_id != product_id:
                 continue
             res |= seller
         return res
@@ -63,9 +62,9 @@ class PurchaseIndex(models.Model):
             index_from = seller_from.purchase_index_id
         if not index_from or not index_to:
             return seller_from.price
-        part_meps = seller_from.price * seller_from.portion_meps / 100 / index_from.index_meps * index_to.index_meps
-        part_mo = seller_from.price * seller_from.portion_mo / 100 / index_from.index_mo * index_to.index_mo
-        part_lme = seller_from.price * seller_from.portion_lme / 100 / index_from.index_lme * index_to.index_lme
+        part_meps = seller_from.price * seller_from.portion_meps / 100 / index_from.index_meps * index_to.index_meps if index_from.index_meps else 0
+        part_mo = seller_from.price * seller_from.portion_mo / 100 / index_from.index_mo * index_to.index_mo if index_from.index_mo else 0
+        part_lme = seller_from.price * seller_from.portion_lme / 100 / index_from.index_lme * index_to.index_lme if index_from.index_lme else 0
 
         return part_meps + part_mo + part_lme
 
@@ -102,5 +101,3 @@ class PurchaseIndex(models.Model):
                 product.standard_price = new_cost
 
         self.state = 'done'
-
-
