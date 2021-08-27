@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="email_template_form_send_products_attachments">
+        <field name="name">mail.template.form.send.products.attachments</field>
+        <field name="model">mail.template</field>
+        <field name="inherit_id" ref="mail.email_template_form"/>
+        <field name="arch" type="xml">
+            <field name="auto_delete" position="after">
+                <field name="send_product_attachments" attrs="{'invisible':[ ('model','not in',['sale.order','purchase.order'])]}"/>
+            </field>
+        </field>
+    </record>
+</odoo>
