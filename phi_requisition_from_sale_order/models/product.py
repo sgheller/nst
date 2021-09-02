@@ -12,7 +12,7 @@ class ProductProduct(models.Model):
     def _compute_current_requisition(self):
         for product in self:
             lines = self.env["purchase.requisition.line"].search([
-                ('product_id', '=', product.id),
+                ('product_id', '=', product.id if isinstance(product.id, int) else product.id.origin),
                 ('requisition_id.state', 'not in', ('cancel', 'done'))
             ])
             if len(lines):

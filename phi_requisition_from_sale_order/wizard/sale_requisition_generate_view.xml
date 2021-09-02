@@ -6,10 +6,10 @@
             <field name="model">purchase_requisition.requisition.generate</field>
             <field name="arch" type="xml">
                 <form string="Generate requisition from sale order">
-                    <field name="lines_ids">
+                    <field name="product_ids">
                         <tree string="Sale Order Lines" create="false" edit="false">
-                            <field name="product_id" readonly="1"/>
-                            <field name="product_uom_qty" readonly="1"/>
+                            <field name="name" readonly="1"/>
+<!--                            <field name="requisition_qty" readonly="1"/>-->
                              <field name="purchase_last_date" readonly="1"/>
                              <field name="purchase_last_partner_id" readonly="1"/>
                             <field name="current_requisition" readonly="1"/>

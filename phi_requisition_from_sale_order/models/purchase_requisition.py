@@ -26,4 +26,3 @@ class PurchaseRequisition(models.Model):
                     'product_qty': line.product_qty,
                     'product_uom': line.product_uom_id.id
                 })
-
