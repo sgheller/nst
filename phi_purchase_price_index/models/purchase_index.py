@@ -28,7 +28,11 @@ class PurchaseIndex(models.Model):
         if len(index_draft) > 0:
             raise UserError(_('Il existe un autre index en brouillon, vous devez le valider avant de créer un nouvel index.'))
         current_index = self._get_current_index()
-        if current_index.date_from and current_index.date_from > datetime.strptime(vals["date_from"], '%Y-%m-%d').date():
+        if isinstance(vals["date_from"], str):
+            date = datetime.strptime(vals["date_from"], '%Y-%m-%d').date()
+        else:
+            date = vals["date_from"]
+        if current_index.date_from and current_index.date_from > date:
             raise UserError(_("Vous devez créer un index avec une date supérieure à l'index en cours % s" % current_index.date_from))
         return super(PurchaseIndex, self).create(vals)
 
@@ -37,6 +41,12 @@ class PurchaseIndex(models.Model):
             if index.state == 'done':
                 raise UserError(_('Vous ne pouvez pas supprimer un index validé'))
         return super(PurchaseIndex, self).unlink()
+
+    def copy(self, default=None):
+        default = dict(default or {})
+        last_index = self.env["phi_purchase_price_index.purchase.index"].search([],order='date_from desc', limit=1)
+        default['date_from'] = last_index.date_from + timedelta(weeks=4)
+        return super().copy(default)
 
     def _select_seller_for_index(self, product_id, date):
         res = self.env['product.supplierinfo']
