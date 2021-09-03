@@ -13,7 +13,7 @@
     'author': "Phidias",
     'website': "http://www.phidias.fr",
     'category': 'Uncategorized',
-    'version': '14.0.0.2',
+    'version': '14.0.0.3',
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -32,6 +32,7 @@
         'web_studio',
         'phi_analytic_account_order_from_sale_to_purchase',
         'phi_purchase_analytic_account_order_header',
+        'sale_margin',
     ],
     "data": [
     ]
