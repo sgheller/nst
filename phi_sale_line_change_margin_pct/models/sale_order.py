@@ -11,5 +11,6 @@ class SaleOrderLine(models.Model):
     @api.onchange('margin_percent')
     def _inverse_margin_percent(self):
         for line in self:
-            line.price_unit = line.purchase_price / ( 1 - line.margin_percent) if (line.margin_percent - 1) else line.purchase_price
+            if line.purchase_price:
+                line.price_unit = line.purchase_price / ( 1 - line.margin_percent) if (line.margin_percent - 1) else line.purchase_price
             #line.margin = line.price_subtotal - (line.purchase_price * line.product_uom_qty)
