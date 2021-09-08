@@ -7,7 +7,7 @@ from odoo import api, fields, models
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    is_prototype = fields.Boolean(string="Is prototype", defaul=False, store=True, readonly=False, help="This product is a prototype.")
+    is_prototype = fields.Boolean(string="Is prototype", default=False, store=True, readonly=False, help="This product is a prototype.")
 
     @api.onchange('is_prototype')
     def onchange_is_prototype(self):

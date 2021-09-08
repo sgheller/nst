@@ -68,3 +68,7 @@ class ProductProduct(models.Model):
                 'default_code': self.default_code + _('-copy'),
             })
         return super().copy(default)
+
+    def _valid_field_parameter(self, field, name):
+        # I can't even
+        return name == 'tracking' or name == 'track_visibility' or super()._valid_field_parameter(field, name)
