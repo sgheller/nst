@@ -33,7 +33,9 @@
         'phi_analytic_account_order_from_sale_to_purchase',
         'phi_purchase_analytic_account_order_header',
         'sale_margin',
+        'sales_delivery_date',
     ],
     "data": [
+        'views/crm_lead_views.xml',
     ]
 }

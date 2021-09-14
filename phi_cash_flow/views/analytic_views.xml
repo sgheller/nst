@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_cash_flow_report" model="ir.actions.client">
+        <field name="name">Cash Flow</field>
+        <field name="tag">account_report</field>
+        <field name="context" eval="{'model': 'phi_cash_flow.analytic.cashflow.report'}" />
+    </record>
+
+    <record id="action_account_report_analytic_cashflow_all" model="ir.actions.client">
+        <field name="name">Analytic Report Cash Flow</field>
+        <field name="tag">account_report</field>
+        <field name="context" eval="{'model': 'phi_cash_flow.analytic.cashflow.report.all'}" />
+    </record>
+
+    <menuitem id="menu_action_report_account_analytic" name="Analytic Report Cash Flow" action="action_account_report_analytic_cashflow_all" parent="account.account_reports_management_menu" groups="analytic.group_analytic_accounting"/>
+
+    <record id="account_analytic_account_view_form_cash_flow" model="ir.ui.view">
+        <field name="name">account.analytic.account.form.cash_flow</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field eval="18" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="%(action_cash_flow_report)d" type="action" class="oe_stat_button" icon="fa-bars" string="Cash Flow"/>
+            </xpath>
+              <xpath expr="//group[@name='main']" position="after">
+                <notebook name="studio_notebook_LNKlg">
+                  <page name="studio_page_LNKlg" string="Cash Flow Forecast">
+                    <group name="studio_group_LNKlg">
+                      <field name="cash_flow_forecast" nolabel="1" omain="[('move_type', '=', 'forecast')]">
+                        <tree string="Cash Flow" editable="bottom">
+                          <field name="name" attrs="{}" invisible="1"/>
+                          <field name="account_analytic_id" invisible="1"/>
+                            <field name="move_type" invisible="1"/>
+                          <field name="date"/>
+                          <field name="amount_in" sum="Amount In" widget="monetary"/>
+                          <field name="amount_out" sum="Amount Out" widget="monetary"/>
+                          <field name="balance" sum="Balance" widget="monetary"/>
+                        </tree>
+                      </field>
+                    </group>
+                  </page>
+                </notebook>
+              </xpath>
+        </field>
+    </record>
+
+
+</odoo>
