@@ -23,6 +23,17 @@
         </field>
     </record>
 
+    <record id="crm_lead_tree_competitor" model="ir.ui.view">
+        <field name="name">crm.lead.tree.competitor</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor" />
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='team_id']" position="after">
+            <field name="competitor_ids" optional="hide" widget="many2many_tags"/>
+          </xpath>
+        </field>
+    </record>
+
     <record id="crm_view_case_opportunities_filter_competitor" model="ir.ui.view">
         <field name="name">crm.lead.search.opportunity.competitor</field>
         <field name="model">crm.lead</field>
