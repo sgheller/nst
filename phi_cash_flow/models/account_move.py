@@ -10,11 +10,12 @@ class AccountMove(models.Model):
 
     cash_flow = fields.One2many('phi_cash_flow.cash.flow', 'invoice_id', string='Cash Flow', copy=False)
 
-    # def write(self, values):
-    #     result = super(AccountMove, self).write(values)
-    #     if values.get("analytic_account_id") or values.get("invoice_date") or values.get("state") or values.get("invoice_payment_term_id"):
-    #         self.create_cash_flow_entries()
-    #     return result
+    def button_draft(self):
+        res = super().button_draft()
+        for move in self:
+            if move.cash_flow:
+                move.cash_flow.unlink()
+        return res
 
     def create_cash_flow_entries(self):
         for move in self:
@@ -26,7 +27,7 @@ class AccountMove(models.Model):
                 continue
 
             if move.state == 'posted' and move.move_type in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'):
-                is_sale = move.move_type in ('out_invoice', 'out_refund')
+                is_sale = move.move_type in ('out_invoice', 'in_refund')
                 casflow_object = self.env["phi_cash_flow.cash.flow"]
                 analytic_accounts = move.invoice_line_ids.mapped('analytic_account_id')
 
