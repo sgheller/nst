@@ -13,7 +13,7 @@
     'author': "Phidias",
     'website': "http://www.phidias.fr",
     'category': 'Uncategorized',
-    'version': '14.0.0.4',
+    'version': '14.0.0.5',
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -35,6 +35,12 @@
         'sale_margin',
         'sales_delivery_date',
         'phi_cash_flow',
+        'phi_product_prototype',
+        'phi_crm_competitors',
+        'phi_requisition_from_sale_order',
+        'phi_sale_customer_incoterm',
+        'phi_sale_line_change_margin_pct',
+        'phi_sale_payment_method',
     ],
     "data": [
         'views/crm_lead_views.xml',
