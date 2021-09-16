@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_partner_property_form_vendor_sale_payment_method" model="ir.ui.view">
+            <field name="name">res.partner.carrier.property.form.vendor.sale_payment_method</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="purchase.view_partner_property_form" />
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='property_payment_term_id']" position="after">
+                <field name="payment_method"/>
+              </xpath>
+            </field>
+        </record>
+
+</odoo>
