@@ -35,6 +35,8 @@ class CashFlow(models.Model):
     purchase_id = fields.Many2one('purchase.order', 'Purchase Order', index=True)
     balance_real_previsionnal = fields.Monetary(string='Balance', compute='_compute_balance_real_previsionnal')
     invoice_id = fields.Many2one('account.move', 'Invoice', index=True)
+    account_analytic_line_id = fields.Many2one('account.analytic.line', 'account_analytic_line_id', index=True)
+    is_fixed_date = fields.Boolean('Date fixed', default=False)
 
     @api.depends('account_analytic_id', 'move_type', 'date')
     def _compute_name(self):
@@ -50,7 +52,6 @@ class CashFlow(models.Model):
                     move.name = move.invoice_id.name
             else:
                 move.name = ''
-
 
     @api.depends('amount_in', 'amount_out')
     def _compute_balance(self):
@@ -72,7 +73,7 @@ class CashFlow(models.Model):
     @api.depends('date')
     def _compute_date_end_month(self):
         for move in self:
-            if move.date < fields.Datetime.now().date() and ( move.sale_id or move.purchase_id or move.invoice_id):
+            if not move.is_fixed_date and move.date < fields.Datetime.now().date() and ( move.sale_id or move.purchase_id or move.invoice_id):
                 date = fields.Datetime.now().date() + relativedelta(months=1)
             else:
                 date = move.date

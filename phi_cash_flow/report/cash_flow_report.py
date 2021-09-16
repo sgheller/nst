@@ -75,6 +75,8 @@ class AnalyticCashflowReport(models.AbstractModel):
     def _generate_analytic_account_lines(self, options):
         lines = []
 
+        analytic_account = self.env["account.analytic.account"].browse(self._get_analytic_accounts_ids())
+
         analytic_entries_domain = self._generate_domain(options)
 
         month_list = self._get_month_list(analytic_entries_domain)
@@ -133,9 +135,9 @@ class AnalyticCashflowReport(models.AbstractModel):
                 'unfolded': False,
             })
 
-        orders = analytic_entries.filtered(lambda line: line.move_type == 'real' and line.sale_id ).mapped('sale_id')
+        orders = analytic_entries.filtered(lambda line: line.amount_in and line.sale_id ).mapped('sale_id')
         for order in orders:
-            columns = self._get_line_values('real_orders', order.cash_flow, month_list)
+            columns = self._get_line_values('real_orders', order.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
             lines.append({
                     'id': 'real_in_order_%s' % order.name,
                     'columns': columns,
@@ -143,11 +145,21 @@ class AnalyticCashflowReport(models.AbstractModel):
                     'unfolded': False,
                 })
 
-        invoices = analytic_entries.filtered(lambda line: line.move_type == 'real' and line.invoice_id and line.amount_in).mapped('invoice_id')
+        invoices = analytic_entries.filtered(lambda line: line.amount_in and line.invoice_id).mapped('invoice_id')
         for invoice in invoices:
-            columns = self._get_line_values('real_invoices', invoice.cash_flow, month_list)
+            columns = self._get_line_values('real_invoices', invoice.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
             lines.append({
                     'id': 'real_in_invoice_%s' % invoice.name,
+                    'columns': columns,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
+
+        analytic_lines = analytic_entries.filtered(lambda line: line.account_analytic_line_id and line.amount_in).mapped('account_analytic_line_id')
+        for line in analytic_lines:
+            columns = self._get_line_values('real_analytis_lines_in', line.cash_flow, month_list)
+            lines.append({
+                    'id': 'real_in_analytixc_line_%s' % line.name,
                     'columns': columns,
                     'unfoldable': False,
                     'unfolded': False,
@@ -162,7 +174,7 @@ class AnalyticCashflowReport(models.AbstractModel):
                 'unfolded': False,
             })
 
-        analytic_entries_domain_real_in_forecast = analytic_entries.filtered(lambda line: line.sale_id or (line.move_type == 'forecast' and line.balance > 0))
+        analytic_entries_domain_real_in_forecast = analytic_entries.filtered(lambda line: (line.move_type == 'real' and line.amount_in) or (line.move_type == 'forecast' and line.balance > 0))
         columns = self._get_line_values('real_in_total_forecast', analytic_entries_domain_real_in_forecast, month_list)
         lines.append({
                 'id': 'Total_CASH_IN_forecast',
@@ -187,9 +199,9 @@ class AnalyticCashflowReport(models.AbstractModel):
                 'unfolded': False,
             })
 
-        orders = analytic_entries.filtered(lambda line: line.purchase_id != False).mapped('purchase_id')
+        orders = analytic_entries.filtered(lambda line: line.purchase_id and line.amount_out).mapped('purchase_id')
         for order in orders:
-            columns = self._get_line_values('real_out_orders', analytic_entries.filtered(lambda line: line.purchase_id.id == order.id), month_list)
+            columns = self._get_line_values('real_out_orders', order.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
             lines.append({
                     'id': 'real_out_order_%s' % order.name,
                     'columns': columns,
@@ -197,7 +209,27 @@ class AnalyticCashflowReport(models.AbstractModel):
                     'unfolded': False,
                 })
 
-        analytic_entries_domain_real_out = analytic_entries.filtered(lambda line: line.purchase_id)
+        invoices = analytic_entries.filtered(lambda line: line.invoice_id and line.amount_out).mapped('invoice_id')
+        for invoice in invoices:
+            columns = self._get_line_values('real_invoices_out', invoice.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
+            lines.append({
+                    'id': 'real_out_invoice_%s' % invoice.name,
+                    'columns': columns,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
+
+        analytic_lines = analytic_entries.filtered(lambda line: line.account_analytic_line_id and line.amount_out).mapped('account_analytic_line_id')
+        for line in analytic_lines:
+            columns = self._get_line_values('real_analytis_lines_out', line.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
+            lines.append({
+                    'id': 'real_out_analytixc_line_%s' % line.name,
+                    'columns': columns,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
+
+        analytic_entries_domain_real_out = analytic_entries.filtered(lambda line: line.amount_out)
         columns_analytic_entries_domain_real_out = self._get_line_values('real_out_total', analytic_entries_domain_real_out, month_list)
         lines.append({
                 'id': 'Total_CASH_OUT',
@@ -206,7 +238,7 @@ class AnalyticCashflowReport(models.AbstractModel):
                 'unfolded': False,
             })
 
-        analytic_entries_domain_real_out_forecast = analytic_entries.filtered(lambda line: line.purchase_id or (line.move_type == 'forecast' and line.balance < 0))
+        analytic_entries_domain_real_out_forecast = analytic_entries.filtered(lambda line: (line.move_type == 'real' and line.amount_out) or (line.move_type == 'forecast' and line.balance < 0))
         columns = self._get_line_values('real_out_total_forecast', analytic_entries_domain_real_out_forecast, month_list)
         lines.append({
                 'id': 'Total_CASH_out_forecast',
@@ -267,15 +299,19 @@ class AnalyticCashflowReport(models.AbstractModel):
             mode = 'progressive'
         elif type_line == 'real_orders':
             columns = [{'name': ''}, {'name': analytic_entries[0].sale_id.name}]
-            field = 'balance'
+            field = 'amount_in'
             field_class = 'number'
         elif type_line == 'real_invoices':
             columns = [{'name': ''}, {'name': analytic_entries[0].invoice_id.name}]
-            field = 'balance'
+            field = 'amount_in'
+            field_class = 'number'
+        elif type_line == 'real_analytis_lines_in':
+            columns = [{'name': ''}, {'name': analytic_entries[0].account_analytic_line_id.name}]
+            field = 'amount_in'
             field_class = 'number'
         elif type_line == 'real_in_total':
             columns = [{'name': ''}, {'name': 'Total CASH IN cumulé', 'class': "o_account_reports_level2"}]
-            field = 'balance'
+            field = 'amount_in'
             field_class = 'number o_account_reports_level2'
             mode = 'progressive'
         elif type_line == 'real_in_total_forecast':
@@ -289,11 +325,19 @@ class AnalyticCashflowReport(models.AbstractModel):
             mode = 'progressive'
         elif type_line == 'real_out_orders':
             columns = [{'name': ''}, {'name': analytic_entries[0].purchase_id.name}]
-            field = 'balance'
+            field = 'amount_out'
+            field_class = 'number'
+        elif type_line == 'real_invoices_out':
+            columns = [{'name': ''}, {'name': analytic_entries[0].invoice_id.name}]
+            field = 'amount_out'
+            field_class = 'number'
+        elif type_line == 'real_analytis_lines_out':
+            columns = [{'name': ''}, {'name': analytic_entries[0].account_analytic_line_id.name}]
+            field = 'amount_out'
             field_class = 'number'
         elif type_line == 'real_out_total':
             columns = [{'name': ''}, {'name': 'Total CASH OUT cumulé', 'class': "o_account_reports_level2"}]
-            field = 'balance'
+            field = 'amount_in'
             field_class = 'number o_account_reports_level2'
             mode = 'progressive'
         elif type_line == 'real_out_total_forecast':
