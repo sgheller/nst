@@ -9,6 +9,7 @@ class AccountAnalyticAccount(models.Model):
 
     cash_flow_forecast = fields.One2many('phi_cash_flow.cash.flow', 'account_analytic_id', string='Cash Flow', copy=False, domain=[('move_type', '=', 'forecast')], tracking=True)
     cash_flow_forecast_balance = fields.Monetary(string="Cash Flow Forecast Balance", compute="_compute_cash_flow_forecast_balance", tracking=True, store=True)
+    cash_flow = fields.One2many('phi_cash_flow.cash.flow', 'account_analytic_id', string='Cash Flow', copy=False)
 
     @api.depends('cash_flow_forecast.amount_in','cash_flow_forecast.amount_out')
     def _compute_cash_flow_forecast_balance(self):
