@@ -32,8 +32,8 @@ class AnalyticCashflowReport(models.AbstractModel):
         analytic_entries_domain = self._generate_domain(options)
         month_list = self._get_month_list(analytic_entries_domain)
 
-        analytic_account = self.env["account.analytic.account"].browse(self._get_analytic_accounts_ids())
-        text = 'Compte analytique : %s' % (analytic_account[0].name) if len(analytic_account) else ''
+        analytic_account = self.env["account.analytic.account"].browse(options['analytic_accounts'][0])
+        text = 'Compte analytique : %s' % (analytic_account.name) if analytic_account else ''
 
         columns = [{'name': ''}, {'name': text}, {'name': ''}]
         for month in month_list:
@@ -75,7 +75,9 @@ class AnalyticCashflowReport(models.AbstractModel):
     def _generate_analytic_account_lines(self, options):
         lines = []
 
-        analytic_account = self.env["account.analytic.account"].browse(self._get_analytic_accounts_ids())
+        #analytic_account = self.env["account.analytic.account"].browse(self._get_analytic_accounts_ids())
+
+        analytic_account = options['analytic_accounts'][0]
 
         analytic_entries_domain = self._generate_domain(options)
 
@@ -142,7 +144,7 @@ class AnalyticCashflowReport(models.AbstractModel):
 
         orders = analytic_entries.filtered(lambda line: line.amount_in and line.sale_id ).mapped('sale_id')
         for order in orders:
-            columns = self._get_line_values('real_orders', order.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
+            columns = self._get_line_values('real_orders', order.cash_flow.filtered(lambda x: x.account_analytic_id.id == analytic_account), month_list)
             lines.append({
                     'id': 'real_in_order_%s' % order.name,
                     'columns': columns,
@@ -152,7 +154,7 @@ class AnalyticCashflowReport(models.AbstractModel):
 
         invoices = analytic_entries.filtered(lambda line: line.amount_in and line.invoice_id).mapped('invoice_id')
         for invoice in invoices:
-            columns = self._get_line_values('real_invoices', invoice.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
+            columns = self._get_line_values('real_invoices', invoice.cash_flow.filtered(lambda x: x.account_analytic_id.id == analytic_account), month_list)
             lines.append({
                     'id': 'real_in_invoice_%s' % invoice.name,
                     'columns': columns,
@@ -162,7 +164,7 @@ class AnalyticCashflowReport(models.AbstractModel):
 
         analytic_lines = analytic_entries.filtered(lambda line: line.account_analytic_line_id and line.amount_in).mapped('account_analytic_line_id')
         for line in analytic_lines:
-            columns = self._get_line_values('real_analytis_lines_in', line.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
+            columns = self._get_line_values('real_analytis_lines_in', line.cash_flow.filtered(lambda x: x.account_analytic_id.id == analytic_account), month_list)
             lines.append({
                     'id': 'real_in_analytixc_line_%s' % line.name,
                     'columns': columns,
@@ -207,7 +209,7 @@ class AnalyticCashflowReport(models.AbstractModel):
 
         orders = analytic_entries.filtered(lambda line: line.purchase_id and line.amount_out).mapped('purchase_id')
         for order in orders:
-            columns = self._get_line_values('real_out_orders', order.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
+            columns = self._get_line_values('real_out_orders', order.cash_flow.filtered(lambda x: x.account_analytic_id.id == analytic_account), month_list)
             lines.append({
                     'id': 'real_out_order_%s' % order.name,
                     'columns': columns,
@@ -217,7 +219,7 @@ class AnalyticCashflowReport(models.AbstractModel):
 
         invoices = analytic_entries.filtered(lambda line: line.invoice_id and line.amount_out).mapped('invoice_id')
         for invoice in invoices:
-            columns = self._get_line_values('real_invoices_out', invoice.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
+            columns = self._get_line_values('real_invoices_out', invoice.cash_flow.filtered(lambda x: x.account_analytic_id.id == analytic_account), month_list)
             lines.append({
                     'id': 'real_out_invoice_%s' % invoice.name,
                     'columns': columns,
@@ -227,7 +229,7 @@ class AnalyticCashflowReport(models.AbstractModel):
 
         analytic_lines = analytic_entries.filtered(lambda line: line.account_analytic_line_id and line.amount_out).mapped('account_analytic_line_id')
         for line in analytic_lines:
-            columns = self._get_line_values('real_analytis_lines_out', line.cash_flow.filtered(lambda x: x.account_analytic_id == analytic_account), month_list)
+            columns = self._get_line_values('real_analytis_lines_out', line.cash_flow.filtered(lambda x: x.account_analytic_id.id == analytic_account), month_list)
             lines.append({
                     'id': 'real_out_analytixc_line_%s' % line.name,
                     'columns': columns,
