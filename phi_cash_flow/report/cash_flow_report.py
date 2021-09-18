@@ -87,7 +87,9 @@ class AnalyticCashflowReport(models.AbstractModel):
 
         analytic_entries_domain_forecast = analytic_entries.filtered(lambda line: line.move_type == 'forecast')
 
-        if len(analytic_entries_domain_forecast):
+        is_forecast = len(analytic_entries_domain_forecast)
+
+        if is_forecast:
             columns = [{'name': 'Prévisionnel', 'class': "o_account_reports_level0"}, {'name': '', 'colspan': 99}]
             lines.append({
                     'id': 'blank_1',
@@ -177,22 +179,23 @@ class AnalyticCashflowReport(models.AbstractModel):
                 'unfolded': False,
             })
 
-        analytic_entries_domain_real_in_forecast = analytic_entries.filtered(lambda line: line.amount_in)
-        columns = self._get_line_values('real_in_total_forecast', analytic_entries_domain_real_in_forecast, month_list)
-        lines.append({
-                'id': 'Total_CASH_IN_forecast',
-                'columns': columns,
-                'unfoldable': False,
-                'unfolded': False,
-            })
+        if is_forecast:
+            analytic_entries_domain_real_in_forecast = analytic_entries.filtered(lambda line: line.amount_in)
+            columns = self._get_line_values('real_in_total_forecast', analytic_entries_domain_real_in_forecast, month_list)
+            lines.append({
+                    'id': 'Total_CASH_IN_forecast',
+                    'columns': columns,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
 
-        columns = self._get_line_values('real_in_total_forecast_sum', analytic_entries_domain_real_in_forecast, month_list)
-        lines.append({
-                'id': 'Total_CASH_IN_forecast_sum',
-                'columns': columns,
-                'unfoldable': False,
-                'unfolded': False,
-            })
+            columns = self._get_line_values('real_in_total_forecast_sum', analytic_entries_domain_real_in_forecast, month_list)
+            lines.append({
+                    'id': 'Total_CASH_IN_forecast_sum',
+                    'columns': columns,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
 
         columns = [{'name': ''}, {'name': 'CASH OUT', 'class': "o_account_reports_level1", 'colspan': 99}]
         lines.append({
@@ -241,22 +244,23 @@ class AnalyticCashflowReport(models.AbstractModel):
                 'unfolded': False,
             })
 
-        analytic_entries_domain_real_out_forecast = analytic_entries.filtered(lambda line: line.amount_out)
-        columns = self._get_line_values('real_out_total_forecast', analytic_entries_domain_real_out_forecast, month_list)
-        lines.append({
-                'id': 'Total_CASH_out_forecast',
-                'columns': columns,
-                'unfoldable': False,
-                'unfolded': False,
-            })
+        if is_forecast:
+            analytic_entries_domain_real_out_forecast = analytic_entries.filtered(lambda line: line.amount_out)
+            columns = self._get_line_values('real_out_total_forecast', analytic_entries_domain_real_out_forecast, month_list)
+            lines.append({
+                    'id': 'Total_CASH_out_forecast',
+                    'columns': columns,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
 
-        columns = self._get_line_values('real_out_total_forecast_sum', analytic_entries_domain_real_out_forecast, month_list)
-        lines.append({
-                'id': 'Total_CASH_OUT_forecast_sum',
-                'columns': columns,
-                'unfoldable': False,
-                'unfolded': False,
-            })
+            columns = self._get_line_values('real_out_total_forecast_sum', analytic_entries_domain_real_out_forecast, month_list)
+            lines.append({
+                    'id': 'Total_CASH_OUT_forecast_sum',
+                    'columns': columns,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
 
         columns = [{'name': ''}, {'name': 'Solde', 'class': "o_account_reports_level1", 'colspan': 99}]
         lines.append({
