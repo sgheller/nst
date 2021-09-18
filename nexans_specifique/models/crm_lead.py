@@ -26,3 +26,17 @@ class CrmLead(models.Model):
         leads = super(CrmLead, self).create(vals_list)
 
         return leads
+
+    def action_archive(self):
+        res = super(CrmLead, self).action_archive()
+        for lead in self:
+            if lead.account_analytic_id:
+                if not any(lead.account_analytic_id.cash_flow.filtered(lambda line: line.move_type == 'real')):
+                    lead.account_analytic_id.action_archive()
+        return res
+
+    def toggle_active(self):
+        super(CrmLead, self).toggle_active()
+        for lead in self:
+            if lead.account_analytic_id and not lead.account_analytic_id.active:
+                lead.account_analytic_id.toggle_active()
