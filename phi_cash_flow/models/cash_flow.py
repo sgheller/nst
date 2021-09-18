@@ -33,7 +33,8 @@ class CashFlow(models.Model):
     date_end_month = fields.Date(string='Date end Month', compute="_compute_date_end_month", index=True)
     sale_id = fields.Many2one('sale.order', 'Sale Order', index=True)
     purchase_id = fields.Many2one('purchase.order', 'Purchase Order', index=True)
-    balance_real_previsionnal = fields.Monetary(string='Balance', compute='_compute_balance_real_previsionnal')
+    balance_real_previsionnal_in = fields.Monetary(string='Balance', compute='_compute_balance_real_previsionnal_in')
+    balance_real_previsionnal_out = fields.Monetary(string='Balance', compute='_compute_balance_real_previsionnal_out')
     invoice_id = fields.Many2one('account.move', 'Invoice', index=True)
     account_analytic_line_id = fields.Many2one('account.analytic.line', 'account_analytic_line_id', index=True)
     is_fixed_date = fields.Boolean('Date fixed', default=False)
@@ -58,13 +59,21 @@ class CashFlow(models.Model):
         for move in self:
             move.balance = move.amount_in - move.amount_out
 
-    @api.depends('amount_in', 'amount_out')
-    def _compute_balance_real_previsionnal(self):
+    @api.depends('amount_in')
+    def _compute_balance_real_previsionnal_in(self):
         for move in self:
             if move.move_type == 'forecast':
-                move.balance_real_previsionnal = move.balance * -1
+                move.balance_real_previsionnal_in = move.amount_in * -1
             else:
-                move.balance_real_previsionnal = move.balance
+                move.balance_real_previsionnal_in = move.amount_in
+
+    @api.depends('amount_out')
+    def _compute_balance_real_previsionnal_out(self):
+        for move in self:
+            if move.move_type == 'forecast':
+                move.balance_real_previsionnal_out = move.amount_out * -1
+            else:
+                move.balance_real_previsionnal_out = move.amount_out
 
     def _valid_field_parameter(self, field, name):
         # I can't even
