@@ -85,36 +85,39 @@ class AnalyticCashflowReport(models.AbstractModel):
 
         analytic_entries = self.env['phi_cash_flow.cash.flow'].search(analytic_entries_domain)
 
-        columns = [{'name': 'Prévisionnel', 'class': "o_account_reports_level0"}, {'name': '', 'colspan': 99}]
-        lines.append({
-                'id': 'blank_1',
-                'columns': columns,
-                'unfoldable': False,
-                'unfolded': False,
-            })
         analytic_entries_domain_forecast = analytic_entries.filtered(lambda line: line.move_type == 'forecast')
-        columns_analytic_entries_domain_forecast = self._get_line_values('forecast_in', analytic_entries_domain_forecast, month_list)
-        lines.append({
-                'id': 'forecast_in',
-                'columns': columns_analytic_entries_domain_forecast,
-                'unfoldable': False,
-                'unfolded': False,
-            })
-        columns = self._get_line_values('forecast_out', analytic_entries_domain_forecast, month_list)
-        lines.append({
-                'id': 'forecast_out',
-                'columns': columns,
-                'unfoldable': False,
-                'unfolded': False,
-            })
 
-        columns_forecast_balance = self._get_line_values('forecast_balance', analytic_entries_domain_forecast, month_list)
-        lines.append({
-                'id': 'forecast_balance',
-                'columns': columns_forecast_balance,
-                'unfoldable': False,
-                'unfolded': False,
-            })
+        if len(analytic_entries_domain_forecast):
+            columns = [{'name': 'Prévisionnel', 'class': "o_account_reports_level0"}, {'name': '', 'colspan': 99}]
+            lines.append({
+                    'id': 'blank_1',
+                    'columns': columns,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
+
+            columns_analytic_entries_domain_forecast = self._get_line_values('forecast_in', analytic_entries_domain_forecast, month_list)
+            lines.append({
+                    'id': 'forecast_in',
+                    'columns': columns_analytic_entries_domain_forecast,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
+            columns = self._get_line_values('forecast_out', analytic_entries_domain_forecast, month_list)
+            lines.append({
+                    'id': 'forecast_out',
+                    'columns': columns,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
+
+            columns_forecast_balance = self._get_line_values('forecast_balance', analytic_entries_domain_forecast, month_list)
+            lines.append({
+                    'id': 'forecast_balance',
+                    'columns': columns_forecast_balance,
+                    'unfoldable': False,
+                    'unfolded': False,
+                })
 
         if not any(analytic_entries.filtered(lambda line: line.move_type == 'real')):
             return lines
