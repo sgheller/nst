@@ -45,5 +45,5 @@ class AccountAnalyticLine(models.Model):
             'date': self.date,
             'move_type': 'real',
             'amount_in': amount if amount > 0 else 0.0,
-            'amount_out': amount if amount < 0 else 0.0,
+            'amount_out': amount * -1 if amount < 0 else 0.0,
         })
