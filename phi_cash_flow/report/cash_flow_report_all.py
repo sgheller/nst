@@ -56,10 +56,10 @@ class AnalyticCashflowReportAll(models.AbstractModel):
             columns = [{'name': account.name},
                        {'name': round(forecast_in, 2) if forecast_in else ''},
                        {'name': round(forecast_out, 2) if forecast_out else ''},
-                       {'name': round(forecast_in - forecast_out , 2),'class': "number color-red" if forecast_in - forecast_out < 0 else "number"},
+                       {'name': round(forecast_in - forecast_out , 2) if forecast_in - forecast_out else '', 'class': "number color-red" if forecast_in - forecast_out < 0 else "number"},
                        {'name': round(real_in, 2) if real_in else ''},
                        {'name': round(real_out, 2) if real_out else ''},
-                       {'name': round(real_in - real_out , 2),'class': "number color-red" if real_in - real_out < 0 else "number"},
+                       {'name': round(real_in - real_out , 2) if real_in - real_out else '', 'class': "number color-red" if real_in - real_out < 0 else "number"},
                        ]
 
             lines.append({
