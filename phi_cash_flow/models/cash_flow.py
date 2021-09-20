@@ -82,7 +82,7 @@ class CashFlow(models.Model):
     @api.depends('date')
     def _compute_date_end_month(self):
         for move in self:
-            if not move.is_fixed_date and move.date < fields.Datetime.now().date() and ( move.sale_id or move.purchase_id or move.invoice_id):
+            if not move.is_fixed_date and move.date < fields.Datetime.now().date() and (move.sale_id or move.purchase_id or move.invoice_id):
                 date = fields.Datetime.now().date() + relativedelta(months=1)
             else:
                 date = move.date
