@@ -13,7 +13,7 @@
     'author': "Phidias",
     'website': "http://www.phidias.fr",
     'category': 'Uncategorized',
-    'version': '14.0.0.5',
+    'version': '14.0.0.6',
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -44,5 +44,6 @@
     ],
     "data": [
         'views/crm_lead_views.xml',
+        'views/purchase_order.xml',
     ]
 }
