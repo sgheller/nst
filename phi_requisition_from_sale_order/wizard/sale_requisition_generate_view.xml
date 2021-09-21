@@ -13,6 +13,7 @@
                              <field name="purchase_last_date" readonly="1"/>
                              <field name="purchase_last_partner_id" readonly="1"/>
                             <field name="current_requisition" readonly="1"/>
+                            <field name="vendor_count" readonly="1"/>
                         </tree>
                     </field>
                     <footer>

@@ -8,6 +8,7 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     current_requisition = fields.Char("Active Requisition", compute="_compute_current_requisition")
+    vendor_count = fields.Integer('Nb Vendors', compute='_compute_vendor_list')
 
     def _compute_current_requisition(self):
         for product in self:
@@ -20,3 +21,7 @@ class ProductProduct(models.Model):
                 product.current_requisition = ','.join(list(requisitions))
             else:
                 product.current_requisition = False
+
+    def _compute_vendor_list(self):
+        for product in self:
+            product.vendor_count = len(product.seller_ids.mapped("name"))
