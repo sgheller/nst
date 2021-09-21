@@ -12,7 +12,8 @@ class PurchaseOrder(models.Model):
     def write(self, values):
         result = super(PurchaseOrder, self).write(values)
         if len(self) and (values.get("analytic_account_id") or values.get("date_planned") or values.get("state") or values.get("payment_term_id")):
-            self.create_cash_flow_entries()
+            for order in self:
+                order.create_cash_flow_entries()
         return result
 
     def create_cash_flow_entries(self):

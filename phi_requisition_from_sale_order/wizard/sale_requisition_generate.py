@@ -17,7 +17,7 @@ class SaleRequisitionGenerate(models.TransientModel):
         sale_order = self.env["sale.order"].browse(res_ids)
         products_all = self._get_products(sale_order)
         for product_id, quantity in products_all.items():
-            if product_id.purchase_ok and product_id.seller_ids:
+            if product_id.purchase_ok:
                 products |= product_id
 
         res['product_ids'] = [(6, 0, products.ids)]
@@ -50,16 +50,19 @@ class SaleRequisitionGenerate(models.TransientModel):
         products_all = self._get_products(sale_order)
         for record in self:
             # create requisition
-            if len(record.product_ids):
+            products = record.product_ids.filtered(lambda t: t.seller_ids)
+            if len(products):
                 purchase_vals = {
                     'type_id': self.env.ref('purchase_requisition.type_multi').id,
                     'company_id': self.env.company.id,
                     'currency_id': self.env.company.currency_id.id,
                     'origin': sale_order.name,
                     'sale_id': sale_order.id,
+                    'schedule_date': sale_order.commitment_date,
+                    'account_analytic_id': sale_order.analytic_account_id.id,
                 }
                 requisition = self.env["purchase.requisition"].create(purchase_vals)
-            for product in record.product_ids:
+            for product in products:
                 if products_all.get(product):
                     qty = products_all[product]
                 else:

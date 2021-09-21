@@ -17,7 +17,8 @@ class SaleOrder(models.Model):
     def write(self, values):
         result = super(SaleOrder, self).write(values)
         if values.get("analytic_account_id") or values.get("commitment_date") or values.get("state") or values.get("payment_term_id"):
-            self.create_cash_flow_entries()
+            for order in self:
+                order.create_cash_flow_entries()
         return result
 
     def create_cash_flow_entries(self):
