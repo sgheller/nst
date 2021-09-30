@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_view_form_inherit_phi_purchase_category" model="ir.ui.view">
+        <field name="name">phi_purchase_category.purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="purchase_category_id"/>
+            </xpath>
+        </field>
+       </record>
+
+    <record id="purchase_order_view_tree_inherit_phi_purchase_category" model="ir.ui.view">
+        <field name="name">phi_purchase_category.purchase.order.tree</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_planned']" position="after">
+                <field name="purchase_category_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_view_tree_inherit_phi_purchase_category" model="ir.ui.view">
+        <field name="name">phi_purchase_category.purchase.order.tree</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_planned']" position="after">
+                <field name="purchase_category_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_search_inherit_phi_purchase_category" model="ir.ui.view">
+        <field name="name">_phi_purchase_category.order.list.select.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='product_id']" position="after">
+            <field name="purchase_category_id"/>
+          </xpath>
+          <xpath expr="//search[1]/group[1]/filter[@name='order_date']" position="after">
+            <filter context="{'group_by': 'purchase_category_id'}" name="studio_group_by_e6ftO" string="Purchase Category"/>
+          </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_view_search_inherit_phi_purchase_category" model="ir.ui.view">
+        <field name="name">_phi_purchase_category.order.view.search.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_search"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='product_id']" position="after">
+            <field name="purchase_category_id"/>
+          </xpath>
+          <xpath expr="//search[1]/group[1]/filter[@name='order_date']" position="after">
+            <filter context="{'group_by': 'purchase_category_id'}" name="studio_group_by_8h79D" string="Purchase Category"/>
+          </xpath>
+        </field>
+    </record>
+
+</odoo>
