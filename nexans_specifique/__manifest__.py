@@ -46,5 +46,6 @@
         'views/crm_lead_views.xml',
         'views/purchase_order.xml',
         'data/approbation_rule.xml',
+        'views/sale_order_views.xml',
     ]
 }

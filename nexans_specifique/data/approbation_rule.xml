@@ -3,7 +3,7 @@
 
     <data noupdate="1">
 
-        <record id="approval_sale_order_confirm" model="studio.approval.rule">
+        <record forcecreate="False" id="approval_sale_order_confirm" model="studio.approval.rule">
             <field name="name">Bon de commande/action_confirm (Ventes / Administrateur)</field>
             <field name="method">action_confirm</field>
             <field name="model_id" ref="sale.model_sale_order" />
@@ -11,7 +11,7 @@
             <field name="message">Approbation pour confirmation de la commande</field>
         </record>
 
-        <record id="approval_opportunity_convert" model="studio.approval.rule">
+        <record forcecreate="False" id="approval_opportunity_convert" model="studio.approval.rule">
             <field name="name">Piste/opportunité/Convert to opportunity (Ventes / Administrateur)</field>
             <field name="action_id" ref="crm.action_crm_lead2opportunity_partner" />
             <field name="model_id" ref="crm.model_crm_lead" />
