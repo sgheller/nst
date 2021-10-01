@@ -11,6 +11,14 @@
             <field name="message">Approbation pour confirmation de la commande</field>
         </record>
 
+        <record id="approval_opportunity_convert" model="studio.approval.rule">
+            <field name="name">Piste/opportunité/Convert to opportunity (Ventes / Administrateur)</field>
+            <field name="action_id" ref="crm.action_crm_lead2opportunity_partner" />
+            <field name="model_id" ref="crm.model_crm_lead" />
+            <field name="group_id" ref="sales_team.group_sale_manager" />
+            <field name="message">Approbation pour conversion de la piste en opportunité</field>
+        </record>
+
     </data>
 
 </odoo>
