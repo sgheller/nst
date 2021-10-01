@@ -1,12 +1,23 @@
 # -*- coding: utf-8 -*-
 from odoo import fields, models, api
 from itertools import groupby
+from datetime import timedelta
 
 
-class EmpName(models.Model):
+class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     order_line_delivery_date = fields.Date(string='Delivery Date')
+
+    def _prepare_procurement_values(self, group_id=False):
+        values = super(SaleOrderLine, self)._prepare_procurement_values(group_id)
+
+        if self.order_line_delivery_date:
+            date_deadline = self.order_line_delivery_date + timedelta(days=self.customer_lead or 0.0)
+            date_planned = self.order_line_delivery_date - timedelta(days=self.order_id.company_id.security_lead)
+            values["date_planned"] = date_planned
+            values["date_deadline"] = date_deadline
+        return values
 
 
 class StockMove(models.Model):
@@ -62,6 +73,8 @@ class StockMove(models.Model):
         res = super(StockMove, self)._get_new_picking_values()
         if self.sale_line_id.order_line_delivery_date:
             res['order_line_delivery_date'] = self.sale_line_id.order_line_delivery_date
+            res['date'] = self.sale_line_id.order_line_delivery_date
+            res['scheduled_date'] = self.sale_line_id.order_line_delivery_date
         return res
 
 
@@ -69,4 +82,5 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     order_line_delivery_date = fields.Date(string='Delivery Date')
+
 
