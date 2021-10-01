@@ -45,5 +45,6 @@
     "data": [
         'views/crm_lead_views.xml',
         'views/purchase_order.xml',
+        'data/approbation_rule.xml',
     ]
 }
