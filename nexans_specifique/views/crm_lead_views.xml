@@ -6,12 +6,24 @@
         <field name="model">crm.lead</field>
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='button_box']" position="inside">
-                <button name="%(phi_cash_flow.action_cash_flow_report_one)d" type="action" class="oe_stat_button" icon="fa-bars" string="Cash Flow"/>
+            <xpath expr="//button[@name='action_set_lost']" position="after">
+                <button name="action_previous" string="Previous Stage" type="object"
+                        attrs="{'invisible': ['|', ('type', '!=', 'opportunity'),('active', '=', False)]}"
+                        studio_approval="True"/>
+                <button name="action_next" string="Next Stage" type="object"
+                        attrs="{'invisible': ['|', ('type', '!=', 'opportunity'),('active', '=', False)]}"
+                        studio_approval="True"/>
             </xpath>
-          <xpath expr="//form[1]/sheet[1]/group[1]/group[not(@name)][1]/field[@name='tag_ids']" position="after">
-            <field name="account_analytic_id"/>
-          </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="%(phi_cash_flow.action_cash_flow_report_one)d" type="action" class="oe_stat_button"
+                        icon="fa-bars" string="Cash Flow"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[not(@name)][1]/field[@name='tag_ids']" position="after">
+                <field name="account_analytic_id"/>
+            </xpath>
+            <xpath expr="//button[@name='163']" position="attributes">
+                <attribute name="studio_approval">True</attribute>
+            </xpath>
         </field>
     </record>
 

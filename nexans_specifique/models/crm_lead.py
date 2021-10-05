@@ -7,6 +7,26 @@ class CrmLead(models.Model):
     _inherit = 'crm.lead'
 
     account_analytic_id = fields.Many2one('account.analytic.account', string='Compte Analytique', store=True, readonly=True)
+    stage_id = fields.Many2one(
+        'crm.stage', string='Stage', index=True, tracking=True,
+        compute='_compute_stage_id', readonly=True, store=True,
+        copy=False, group_expand='_read_group_stage_ids', ondelete='restrict',
+        domain="['|', ('team_id', '=', False), ('team_id', '=', team_id)]")
+
+    def action_previous(self):
+        self.ensure_one()
+        previous_stage_id = self.env['crm.stage'].search(['|', ('team_id', '=', False), ('team_id', '=', self.team_id.id), ('sequence', '<', self.stage_id.sequence)],
+                                                     order='sequence desc', limit=1)
+        if previous_stage_id:
+            self.stage_id = previous_stage_id
+        pass
+
+    def action_next(self):
+        self.ensure_one()
+        next_stage_id = self.env['crm.stage'].search(['|', ('team_id', '=', False), ('team_id', '=', self.team_id.id), ('sequence', '>', self.stage_id.sequence)],
+                                                     order='sequence', limit=1)
+        if next_stage_id:
+            self.stage_id = next_stage_id
 
     def write(self, values):
         if not self.account_analytic_id and values.get('account_analytic_id') == None:

@@ -3,20 +3,49 @@
 
     <data noupdate="1">
 
-        <record forcecreate="False" id="approval_sale_order_confirm" model="studio.approval.rule">
+        <record forcecreate="True" id="approval_sale_order_confirm" model="studio.approval.rule">
             <field name="name">Bon de commande/action_confirm (Ventes / Administrateur)</field>
             <field name="method">action_confirm</field>
-            <field name="model_id" ref="sale.model_sale_order" />
-            <field name="group_id" ref="sales_team.group_sale_manager" />
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="group_id" ref="sales_team.group_sale_manager"/>
+            <field name="active">True</field>
             <field name="message">Approbation pour confirmation de la commande</field>
         </record>
 
-        <record forcecreate="False" id="approval_opportunity_convert" model="studio.approval.rule">
+        <record forcecreate="True" id="approval_opportunity_convert" model="studio.approval.rule">
             <field name="name">Piste/opportunité/Convert to opportunity (Ventes / Administrateur)</field>
-            <field name="action_id" ref="crm.action_crm_lead2opportunity_partner" />
-            <field name="model_id" ref="crm.model_crm_lead" />
-            <field name="group_id" ref="sales_team.group_sale_manager" />
+            <field name="action_id" ref="crm.action_crm_lead2opportunity_partner"/>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="group_id" ref="sales_team.group_sale_manager"/>
+            <field name="active">True</field>
             <field name="message">Approbation pour conversion de la piste en opportunité</field>
+        </record>
+
+        <record forcecreate="True" id="approval_opportunity_next" model="studio.approval.rule">
+            <field name="name">Piste/opportunité/Next Action (Ventes / Administrateur)</field>
+            <field name="method">action_next</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="group_id" ref="sales_team.group_sale_manager"/>
+            <field name="active">True</field>
+            <field name="message">Approbation pour avancement dans le workflow</field>
+        </record>
+
+        <record forcecreate="True" id="approval_opportunity_previous" model="studio.approval.rule">
+            <field name="name">Piste/opportunité/Previous Action (Ventes / Administrateur)</field>
+            <field name="method">action_previous</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="group_id" ref="sales_team.group_sale_manager"/>
+            <field name="active">True</field>
+            <field name="message">Approbation pour reculer dans le workflow</field>
+        </record>
+
+        <record forcecreate="True" id="approval_opportunity_lost" model="studio.approval.rule">
+            <field name="name">Piste/opportunité/Mark as lost (Ventes / Administrateur)</field>
+            <field name="action_id" ref="crm.crm_lead_lost_action"/>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="group_id" ref="sales_team.group_sale_manager"/>
+            <field name="active">True</field>
+            <field name="message">Approbation perte de l'opportunité</field>
         </record>
 
     </data>

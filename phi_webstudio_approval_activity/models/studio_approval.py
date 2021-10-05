@@ -31,6 +31,16 @@ class StudioApprovalRule(models.Model):
                             'res_id': res_id,
                             'user_id': rule.group_id.users[0].id
                         })
+        else:
+            rule = self.env['studio.approval.rule'].browse(res["rules"][0]['id'])
+            if rule:
+                existing_activity = self.env['mail.activity'].search([
+                    ('res_id', '=', res_id),
+                    ('res_model_id', '=', rule.model_id.id),
+                    ('activity_type_id', '=', self.env.ref('mail.mail_activity_data_todo').id),
+                    ('summary', '=', rule.message)])
+            if existing_activity:
+                existing_activity.action_done()
 
         return res
 
