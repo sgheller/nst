@@ -5,11 +5,18 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-              <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='purchase_price']" position="attributes">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='purchase_price']"
+                   position="attributes">
                 <attribute name="attrs">{}</attribute>
                 <attribute name="force_save">True</attribute>
                 <attribute name="readonly">1</attribute>
-              </xpath>
+            </xpath>
+            <xpath expr="//form[1]/header[1]/button[@name='action_confirm']" position="attributes">
+                <attribute name="studio_approval">True</attribute>
+            </xpath>
+            <xpath expr="//form[1]/header[1]/button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="studio_approval">True</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
