@@ -24,6 +24,9 @@
             <xpath expr="//button[@name='163']" position="attributes">
                 <attribute name="studio_approval">True</attribute>
             </xpath>
+            <xpath expr="//button[@name='164']" position="attributes">
+                <attribute name="studio_approval">True</attribute>
+            </xpath>
         </field>
     </record>
 
