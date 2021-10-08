@@ -27,7 +27,7 @@
 <!--            <xpath expr="//button[@name='164']" position="attributes">-->
 <!--                <attribute name="studio_approval">True</attribute>-->
 <!--            </xpath>-->
-<!--        </field>-->
+        </field>
     </record>
 
 </odoo>
