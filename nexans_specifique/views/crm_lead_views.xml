@@ -21,13 +21,13 @@
             <xpath expr="//form[1]/sheet[1]/group[1]/group[not(@name)][1]/field[@name='tag_ids']" position="after">
                 <field name="account_analytic_id"/>
             </xpath>
-            <xpath expr="//button[@name='163']" position="attributes">
-                <attribute name="studio_approval">True</attribute>
-            </xpath>
-            <xpath expr="//button[@name='164']" position="attributes">
-                <attribute name="studio_approval">True</attribute>
-            </xpath>
-        </field>
+<!--            <xpath expr="//button[@name='163']" position="attributes">-->
+<!--                <attribute name="studio_approval">True</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='164']" position="attributes">-->
+<!--                <attribute name="studio_approval">True</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
     </record>
 
 </odoo>
