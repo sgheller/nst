@@ -48,6 +48,15 @@
             <field name="message">Approbation perte de l'opportunité</field>
         </record>
 
+        <record forcecreate="True" id="approval_opportunity_lost" model="studio.approval.rule">
+            <field name="name">Piste/opportunité/Mark as lost (Ventes / Administrateur)</field>
+            <field name="method">action_set_won_rainbowman</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="group_id" ref="sales_team.group_sale_manager"/>
+            <field name="active">True</field>
+            <field name="message">Approbation gain de l'opportunité</field>
+        </record>
+
     </data>
 
 </odoo>

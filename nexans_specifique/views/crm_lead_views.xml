@@ -27,6 +27,9 @@
             <xpath expr="//button[@name='%(crm.action_crm_lead2opportunity_partner)d']" position="attributes">
                 <attribute name="studio_approval">True</attribute>
             </xpath>
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
+                <attribute name="studio_approval">True</attribute>
+            </xpath>
         </field>
     </record>
 
