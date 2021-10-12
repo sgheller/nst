@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="office365_setting">
+            <field name="name">res.config.settings.office365</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Office 365" string="Office 365" data-key="odoo_office365" groups="sales_team.group_sale_manager">
+                        <div id="office365_settings">
+                            <h2>Office 365 Admin Settings</h2>
+                            <div class="row mt16 o_settings_container">
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <span class="o_form_label">Office 365 Credentials</span>
+                                        <div class="text-muted">
+                                            If you want to sync data with Office 365.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="row mt16">
+                                                <label for="redirect_url" string="Redirect URL" class="col-lg-4 o_light_label"/>
+                                                <field name="redirect_url"/>
+                                            </div>
+                                            <div class="row mt8">
+                                                <label for="client_id" string="Client ID" class="col-lg-4 o_light_label"/>
+                                                <field name="client_id"/>
+                                            </div>
+                                            <div class="row mt8">
+                                                <label for="client_secret" string="Client Secret" class="col-lg-4 o_light_label"/>
+                                                <field name="client_secret" password="True"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane bg-primary">
+                                        <h4 style="color:white">Information:</h4>
+                                        <p>If you select scheduled actions for your execution then do carefully because
+                                            all settings i.e. interval and interval unit will be same for every users.
+                                            For example if you set scheduled action to run/execute after every hour then
+                                        schedule action will run/execute for other users after every hour too.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="office365_auto_settings">
+                            <h2>Office 365 Auto Scheduler Settings</h2>
+                            <div class="row mt16 o_settings_container">
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane">
+                                        <span class="o_form_label">Auto Scheduler Settings</span>
+                                        <div class="text-muted">
+                                            This is auto scheduler settings for every user.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="row mt16">
+                                                <label for="interval_number" string="Interval Number" class="col-lg-4 o_light_label"/>
+                                                <field name="interval_number"/>
+                                            </div>
+                                            <div class="row mt8">
+                                                <label for="interval_unit" string="Interval Unit" class="col-lg-4 o_light_label"/>
+                                                <field name="interval_unit"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_left_pane"/>
+                                    <div class="o_setting_right_pane bg-warning">
+                                        <h4 style="color:red">Warning:</h4>
+                                        <p>If you select scheduled actions for your execution then do carefully because
+                                            all settings i.e. interval and interval unit will be same for every users.
+                                            For example if you set scheduled action to run/execute after every hour then
+                                        schedule action will run/execute for other users after every hour too.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+
