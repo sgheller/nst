@@ -17,6 +17,15 @@
             <xpath expr="//form[1]/header[1]/button[@name='action_confirm'][2]" position="attributes">
                 <attribute name="studio_approval">True</attribute>
             </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="purchase_price_index"/>
+                <field name="indice_meps"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='other_information']/group[2]" position="after">
+                <group name="studio_group_cokYO">
+                    <field name="customer_text"/>
+                </group>
+            </xpath>
         </field>
     </record>
 </odoo>

@@ -3,6 +3,7 @@
 from odoo import models, fields, api, _
 from datetime import timedelta, datetime
 from odoo.exceptions import UserError
+from odoo.tools.misc import format_date
 
 
 class PurchaseIndex(models.Model):
@@ -17,6 +18,7 @@ class PurchaseIndex(models.Model):
     index_lme = fields.Integer(string="LME", help="Indice traitement de surface", default=0, required=True)
 
     state = fields.Selection([('draft', 'Brouillon'), ('done', 'Traité')], 'Statut', readonly=True, copy=False, default='draft', required=True)
+    display_name = fields.Char(compute='_compute_display_name')
 
     _sql_constraints = [
         ('unique_date', 'unique (date_from)', 'La date doit être unique')
@@ -111,3 +113,7 @@ class PurchaseIndex(models.Model):
                 product.standard_price = new_cost
 
         self.state = 'done'
+
+    def _compute_display_name(self):
+        for index in self:
+            index.display_name = "Date: %s - MEPS=%s, MO=%s, LME=%s" % (format_date(self.env, index.date_from), index.index_meps, index.index_mo, index.index_lme)
