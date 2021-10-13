@@ -13,7 +13,7 @@
     'author': "Phidias",
     'website': "http://www.phidias.fr",
     'category': 'Uncategorized',
-    'version': '14.0.0.7',
+    'version': '14.0.0.8',
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -41,6 +41,23 @@
         'phi_sale_customer_incoterm',
         'phi_sale_line_change_margin_pct',
         'phi_sale_payment_method',
+        'product_approval_management',
+        'phi_crm_others_contacts',
+        'phi_customer_insured_amount',
+        'phi_helpdesk_purchase',
+        'phi_order_mail_with_product_attachments',
+        'phi_product_last_purchase_info',
+        'phi_product_substitute',
+        'phi_purchase_category',
+        'phi_purchase_price_index',
+        'phi_purchase_receipt_by_date',
+        'phi_purchase_vendor_incoterm',
+        'phi_quadra_export',
+        'phi_vendor_buyer',
+        'phi_webstudio_approval_activity',
+        'product_code_unique',
+        'product_sequence',
+        'sales_delivery_date',
     ],
     "data": [
         'views/crm_lead_views.xml',
