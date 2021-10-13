@@ -89,6 +89,6 @@ msgid "Sales Order Line"
 msgstr "Ligne de bons de commande"
 
 #. module: product_approval_management
-#: model_terms:ir.ui.view,arch_db:product_approval_management.product_template_search_view__approval
+#: model_terms:ir.ui.view,arch_db:product_approval_management.product_template_search_view_approval
 msgid "To approve"
 msgstr "A approuver"
