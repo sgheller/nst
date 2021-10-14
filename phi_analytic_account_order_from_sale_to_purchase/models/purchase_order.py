@@ -12,6 +12,8 @@ class PurchaseOrderLine(models.Model):
             analytic_account_id = self._get_sale_analytic_account()
             if analytic_account_id:
                 values["account_analytic_id"] = analytic_account_id
+                if not self.order_id.account_analytic_id:
+                    self.order_id.account_analytic_id = analytic_account_id
         return super(PurchaseOrderLine, self).write(values)
 
     def _get_sale_order(self):
