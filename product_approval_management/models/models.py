@@ -29,7 +29,7 @@ class ApproveProduct(models.Model):
     approve_state = fields.Selection([
         ('draft', 'Draft'),
         ('confirmed', 'Confirmed')
-    ], default='draft')
+    ], default='draft', copy=False)
 
     def confirm_product_approval(self):
         for rec in self:
