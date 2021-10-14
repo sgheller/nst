@@ -40,6 +40,18 @@ class ApproveProduct(models.Model):
             rec.approve_state = 'draft'
 
 
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+
+    def confirm_product_approval(self):
+        for rec in self:
+            rec.approve_state = 'confirmed'
+
+    def reset_product_approval(self):
+        for rec in self:
+            rec.approve_state = 'draft'
+
+
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
