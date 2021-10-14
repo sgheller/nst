@@ -1,0 +1,141 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* phi_quadra_export
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-03 15:18+0000\n"
+"PO-Revision-Date: 2020-08-03 15:18+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: phi_quadra_export
+#: code:addons/phi_quadra_export/wizard/export_ascii.py:115
+#, python-format
+msgid "ASCII File Download"
+msgstr "Téléchargement Fichier ASCII"
+
+#. module: phi_quadra_export
+#: model_terms:ir.ui.view,arch_db:phi_quadra_export.account_export_ascii_form_view
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: phi_quadra_export
+#: model:ir.model,name:phi_quadra_export.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: phi_quadra_export
+#: model:ir.model,name:phi_quadra_export.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de config"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: phi_quadra_export
+#: model_terms:ir.ui.view,arch_db:phi_quadra_export.res_config_settings_view_form
+msgid "During ASCII export, group account move lines by account, journal entries and partner."
+msgstr "Lors de l'export ASCII, groupe les écritures par compte, pièce comptable et client."
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__date_to
+msgid "End Date"
+msgstr "Date de fin"
+
+#. module: phi_quadra_export
+#: model:ir.actions.act_window,name:phi_quadra_export.export_ascii_action
+#: model:ir.ui.menu,name:phi_quadra_export.account_fr_fec_menu
+msgid "Export ASCII"
+msgstr ""
+
+#. module: phi_quadra_export
+#: model:ir.model,name:phi_quadra_export.model_account_export_ascii
+msgid "Export ASCII for Quadra"
+msgstr "Export ASCII pour Quadra"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__file
+msgid "File"
+msgstr "Fichier"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__filename
+msgid "Filename"
+msgstr "Nom du fichier"
+
+#. module: phi_quadra_export
+#: model_terms:ir.ui.view,arch_db:phi_quadra_export.account_export_ascii_form_view
+msgid "Generate"
+msgstr "Générer"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__id
+msgid "ID"
+msgstr ""
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: phi_quadra_export
+#: code:addons/phi_quadra_export/wizard/export_ascii.py:69
+#, python-format
+msgid "Missing Aux Num on Partners:"
+msgstr "Compte auxiliaire manquant sur les contacts suivants:"
+
+#. module: phi_quadra_export
+#: model:ir.ui.menu,name:phi_quadra_export.account_reports_quadra_menu
+msgid "Quadra"
+msgstr ""
+
+#. module: phi_quadra_export
+#: model_terms:ir.ui.view,arch_db:phi_quadra_export.res_config_settings_view_form
+msgid "Quadra Export ASCII"
+msgstr "Export ASCII Quadra"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_res_company__quadra_export_group_lines
+#: model:ir.model.fields,field_description:phi_quadra_export.field_res_config_settings__quadra_export_group_lines
+msgid "Quadra Export Group Lines"
+msgstr "Export Quadra regroupement lignes"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__date_from
+msgid "Start Date"
+msgstr "Date de début"
+
+#. module: phi_quadra_export
+#: model:ir.model.fields,field_description:phi_quadra_export.field_account_export_ascii__warning_msg
+msgid "Warning"
+msgstr "Avertissement"
+

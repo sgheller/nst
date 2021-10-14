@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* phi_product_substitute
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-30 09:32+0000\n"
+"PO-Revision-Date: 2021-09-30 09:32+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: phi_product_substitute
+#: model:ir.model.fields,field_description:phi_product_substitute.field_product_template__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: phi_product_substitute
+#: model:ir.model.fields,field_description:phi_product_substitute.field_product_template__id
+msgid "ID"
+msgstr ""
+
+#. module: phi_product_substitute
+#: model:ir.model.fields,field_description:phi_product_substitute.field_product_template____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: phi_product_substitute
+#: model:ir.model,name:phi_product_substitute.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: phi_product_substitute
+#: model:ir.model.fields,field_description:phi_product_substitute.field_product_product__product_substitute_id
+#: model:ir.model.fields,field_description:phi_product_substitute.field_product_template__product_substitute_id
+msgid "Substitute Product"
+msgstr "Article de remplacement"

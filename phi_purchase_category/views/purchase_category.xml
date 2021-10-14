@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="phi_purchase_category.purchase_category_list">
+            <field name="name">phi_purchase_category purchase_category.list</field>
+            <field name="model">phi_purchase_category.purchase_category</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase Category" editable="top">
+                    <field name="name" />
+                    <field name="description" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="phi_purchase_category.purchase_category_action_window">
+            <field name="name">Purchase Category</field>
+            <field name="res_model">phi_purchase_category.purchase_category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Créer une première catégorie</p>
+            </field>
+        </record>
+
+        <menuitem  action="phi_purchase_category.purchase_category_action_window" id="menu_purchase_category"
+           parent="purchase.menu_purchase_config" sequence="1"/>
+    </data>
+</odoo>
