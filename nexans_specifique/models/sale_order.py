@@ -8,7 +8,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     purchase_price_index = fields.Many2one('phi_purchase_price_index.purchase.index', string='Indice Prix', compute="_computepurchase_price_index")
-    indice_meps = fields.Date("Indice Meps")
+    indice_meps = fields.Char("Indice Meps")
     customer_text = fields.Text(string="Texte Client")
 
     @api.onchange('opportunity_id')
