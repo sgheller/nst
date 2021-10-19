@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import crm_competitor
-from . import crm_lead
+from . import account_incoterms
+from . import sale_order
+from . import account_invoice
+from . import sale_make_invoice_advance

@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Phidias : CRM Competitors",
+    'name': "Phidias : Incoterm Description",
 
     'summary': """
-        Phidias : CRM Competitors
+        Phidias : Incoterm Description
         """,
 
     'description': """
-        Phidias : CRM Competitors
+        Phidias : Incoterm Description
     """,
 
     'author': "Phidias",
@@ -17,11 +17,14 @@
 
     # any module necessary for this one to work correctly
     'depends': [
-        'crm',
+        'account',
+        'purchase',
+        'sale_management',
+        'sale_stock',
     ],
     "data": [
-        'security/ir.model.access.csv',
-        'views/crm_lead_views.xml',
-        'views/crm_competitor.xml',
+        'views/sale_order_views.xml',
+        'report/sale_order_report_templates.xml',
+        'views/account_invoice_view.xml',
     ]
 }
