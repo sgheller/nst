@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_case_form_view_competitor" model="ir.ui.view">
+        <field name="name">crm.lead.competitor.inherited.crm</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+                <group name="contact_ids">
+                    <field name="contact_ids" optional="hide" widget="many2many">
+                        <tree string="Contacts" sample="1" multi_edit="1">
+                            <field name="display_name" string="Name"/>
+                            <field name="function" invisible="1"/>
+                            <field name="phone" class="o_force_ltr" optional="show"/>
+                            <field name="email" optional="show"/>
+                            <field name="user_id" optional="show" widget="many2one_avatar_user"
+                                   domain="[('share', '=', False)]"/>
+                            <field name="activity_ids" optional="show" widget="list_activity"/>
+
+                            <field name="city" optional="show"/>
+                            <field name="state_id" optional="hide" readonly="1"/>
+                            <field name="country_id" optional="show" readonly="1"/>
+                            <field name="vat" optional="hide" readonly="1"/>
+                            <field name="category_id" optional="hide" widget="many2many_tags"
+                                   options="{'color_field': 'color'}"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                            <field name="is_company" invisible="1"/>
+                            <field name="parent_id" invisible="1" readonly="1"/>
+                            <field name="active" invisible="1"/>
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_lead_tree_competitor" model="ir.ui.view">
+        <field name="name">crm.lead.tree.competitor</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="contact_ids" optional="hide" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_view_case_opportunities_filter_competitor" model="ir.ui.view">
+        <field name="name">crm.lead.search.opportunity.competitor</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone_mobile_search']" position="after">
+                <field name="contact_ids"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

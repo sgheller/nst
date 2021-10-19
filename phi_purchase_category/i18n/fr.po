@@ -1,0 +1,91 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* phi_purchase_category
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-30 08:40+0000\n"
+"PO-Revision-Date: 2021-09-30 08:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: phi_purchase_category
+#: model:ir.model,name:phi_purchase_category.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: phi_purchase_category
+#: model:ir.model.fields,field_description:phi_purchase_category.field_phi_purchase_category_purchase_category__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: phi_purchase_category
+#: model:ir.model.fields,field_description:phi_purchase_category.field_phi_purchase_category_purchase_category__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: phi_purchase_category
+#: model_terms:ir.actions.act_window,help:phi_purchase_category.purchase_category_action_window
+msgid "Créer une première catégorie"
+msgstr ""
+
+#. module: phi_purchase_category
+#: model:ir.model.fields,field_description:phi_purchase_category.field_phi_purchase_category_purchase_category__description
+msgid "Description"
+msgstr ""
+
+#. module: phi_purchase_category
+#: model:ir.model.fields,field_description:phi_purchase_category.field_phi_purchase_category_purchase_category__display_name
+#: model:ir.model.fields,field_description:phi_purchase_category.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:phi_purchase_category.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: phi_purchase_category
+#: model:ir.model.fields,field_description:phi_purchase_category.field_phi_purchase_category_purchase_category__id
+#: model:ir.model.fields,field_description:phi_purchase_category.field_purchase_order__id
+#: model:ir.model.fields,field_description:phi_purchase_category.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: phi_purchase_category
+#: model:ir.model.fields,field_description:phi_purchase_category.field_phi_purchase_category_purchase_category____last_update
+#: model:ir.model.fields,field_description:phi_purchase_category.field_purchase_order____last_update
+#: model:ir.model.fields,field_description:phi_purchase_category.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: phi_purchase_category
+#: model:ir.model.fields,field_description:phi_purchase_category.field_phi_purchase_category_purchase_category__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: phi_purchase_category
+#: model:ir.model.fields,field_description:phi_purchase_category.field_phi_purchase_category_purchase_category__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: phi_purchase_category
+#: model:ir.actions.act_window,name:phi_purchase_category.purchase_category_action_window
+#: model:ir.model,name:phi_purchase_category.model_phi_purchase_category_purchase_category
+#: model:ir.model.fields,field_description:phi_purchase_category.field_phi_purchase_category_purchase_category__name
+#: model:ir.model.fields,field_description:phi_purchase_category.field_purchase_order__purchase_category_id
+#: model:ir.model.fields,field_description:phi_purchase_category.field_res_partner__purchase_category_id
+#: model:ir.model.fields,field_description:phi_purchase_category.field_res_users__purchase_category_id
+#: model:ir.ui.menu,name:phi_purchase_category.menu_purchase_category
+#: model_terms:ir.ui.view,arch_db:phi_purchase_category.purchase_category_list
+#: model_terms:ir.ui.view,arch_db:phi_purchase_category.purchase_order_search_inherit_phi_purchase_category
+#: model_terms:ir.ui.view,arch_db:phi_purchase_category.purchase_order_view_search_inherit_phi_purchase_category
+msgid "Purchase Category"
+msgstr "Catégorie Achat"
+
+#. module: phi_purchase_category
+#: model:ir.model,name:phi_purchase_category.model_purchase_order
+msgid "Purchase Order"
+msgstr "Bon de Commande"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_customer_nexans" model="ir.ui.view">
+        <field name="name">sale.order.form.customer_nexans</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='purchase_price']"
+                   position="attributes">
+                <attribute name="attrs">{}</attribute>
+                <attribute name="force_save">True</attribute>
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//form[1]/header[1]/button[@name='action_confirm']" position="attributes">
+                <attribute name="studio_approval">True</attribute>
+            </xpath>
+            <xpath expr="//form[1]/header[1]/button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="studio_approval">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="purchase_price_index"/>
+                <field name="indice_meps"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='other_information']/group[2]" position="after">
+                <group name="studio_group_cokYO">
+                    <field name="customer_text"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_partner_property_form_vendor_buyer" model="ir.ui.view">
+            <field name="name">res.partner.carrier.property.form.vendor.buyer</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="purchase.view_partner_property_form" />
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='property_purchase_currency_id']" position="after">
+                <field name="po_user_id"/>
+              </xpath>
+            </field>
+        </record>
+
+        <record id="customer_vendor_buyer_search_view" model="ir.ui.view">
+            <field name="name">customer.vendor_buyer.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='user_id']" position="after">
+                <field name="po_user_id"/>
+                <filter domain="[['po_user_id','=',uid]]" name="studio_filter_DKsiV" string="My Vendors"/>
+              </xpath>
+              <xpath expr="//filter[@name='group_country']" position="after">
+                <filter context="{'group_by': 'po_user_id'}" name="studio_group_by_xXYf7" string="Vendor Buyer"/>
+              </xpath>
+            </field>
+        </record>
+
+</odoo>

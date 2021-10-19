@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="helpdesk_ticket_view_form_inherit_helpdesk_purchase" model="ir.ui.view">
+        <field name='name'>helpdesk.ticket.form.inherit.purchase</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <field name='email_cc' position="after">
+                <field name="purchase_order_id" options='{"no_open": True}'/>
+            </field>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="context">{'res_partner_search_mode': ''}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Contact</attribute>
+            </xpath>
+        </field>
+    </record>
+
+        <record id="helpdesk_ticket_view_tree_purchase" model="ir.ui.view">
+            <field name='name'>helpdesk_ticket_view_tree.purchase</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Contact</attribute>
+              </xpath>
+            </field>
+        </record>
+
+    <record id="quick_create_ticket_form_purchase" model="ir.ui.view">
+        <field name='name'>helpdesk.ticket.form.quick_create.purchase</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.quick_create_ticket_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="context">{'res_partner_search_mode': ''}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
