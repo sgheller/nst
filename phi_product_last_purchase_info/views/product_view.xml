@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <record id="product_product_view_form_product_last_purchase_info" model="ir.ui.view">
+        <field name="name">product.product.view.form.product_last_purchase_info</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='purchase_method']" position="after">
+            <field name="purchase_last_date" attrs="{'invisible': [('purchase_ok', '=', False)]}"/>
+            <field name="purchase_last_partner_id" attrs="{'invisible': [('purchase_ok', '=', False)]}"/>
+          </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sale_requisition_generate" model="ir.ui.view">
+            <field name="name">phi_requisition_from_sale_order.sale.requisition.generate.form</field>
+            <field name="model">purchase_requisition.requisition.generate</field>
+            <field name="arch" type="xml">
+                <form string="Generate requisition from sale order">
+                    <field name="product_ids">
+                        <tree string="Sale Order Lines" create="false" edit="false">
+                            <field name="name" readonly="1"/>
+<!--                            <field name="requisition_qty" readonly="1"/>-->
+                             <field name="purchase_last_date" readonly="1"/>
+                             <field name="purchase_last_partner_id" readonly="1"/>
+                            <field name="current_requisition" readonly="1"/>
+                            <field name="vendor_count" readonly="1"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button string='Generate' name="generate" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_sale_requisition_generate" model="ir.actions.act_window">
+            <field name="name">Generate requisition from sale order</field>
+            <field name="res_model">purchase_requisition.requisition.generate</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_sale_requisition_generate"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

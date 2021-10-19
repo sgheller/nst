@@ -1,0 +1,167 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* phi_requisition_from_sale_order
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-27 14:24+0000\n"
+"PO-Revision-Date: 2021-08-27 14:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_order_form_requisition_from_sale_order
+msgid "<span class=\"o_stat_text\">Requisition</span>"
+msgstr ""
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_product_product__current_requisition
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order_line__current_requisition
+msgid "Active Requisition"
+msgstr "Appel d'offre en cours"
+
+#. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_sale_requisition_generate
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_product_product__display_name
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition__display_name
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__display_name
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order__display_name
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order_line__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_sale_requisition_generate
+msgid "Generate"
+msgstr "Générer"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model,name:phi_requisition_from_sale_order.model_purchase_requisition_requisition_generate
+msgid "Generate Requisition From Sale Order"
+msgstr "Générer des appels d'offre depuis la commande de vente"
+
+#. module: phi_requisition_from_sale_order
+#: code:addons/phi_requisition_from_sale_order/models/sale.py:0
+#, python-format
+msgid "Generate Sale Requisition"
+msgstr "Générer appel d'offre"
+
+#. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_order_form_requisition_from_sale_order
+msgid "Generate requisition"
+msgstr "Générer appel d'offre"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.actions.act_window,name:phi_requisition_from_sale_order.action_sale_requisition_generate
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_sale_requisition_generate
+msgid "Generate requisition from sale order"
+msgstr "Générer appel d'offre depuis la commande de vente"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_product_product__id
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition__id
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__id
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order__id
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order_line__id
+msgid "ID"
+msgstr ""
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_product_product____last_update
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition____last_update
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate____last_update
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order____last_update
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order_line____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order_line__purchase_last_partner_id
+msgid "Last purchase Vendor"
+msgstr "Dernier prix d'achat"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order_line__purchase_last_date
+msgid "Last purchase date"
+msgstr "Dernière date d'achat"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__lines_ids
+msgid "Lines"
+msgstr "Lignes"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model,name:phi_requisition_from_sale_order.model_product_product
+msgid "Product"
+msgstr "Article"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order__requisition_ids
+msgid "Purchase Agreement"
+msgstr "Appel d'offre"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model,name:phi_requisition_from_sale_order.model_purchase_requisition
+msgid "Purchase Requisition"
+msgstr "Appel d'offres"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order__requisitions_count
+msgid "Requisition count"
+msgstr "Nombre d'appels d'offre"
+
+#. module: phi_requisition_from_sale_order
+#: code:addons/phi_requisition_from_sale_order/models/sale.py:0
+#, python-format
+msgid "Requisition from sale order %s"
+msgstr "Appel d'offre de la commande %s"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition__sale_id
+msgid "Sale Order"
+msgstr "Commande de vente"
+
+#. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_sale_requisition_generate
+msgid "Sale Order Lines"
+msgstr "Lignes de commande de vente"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model,name:phi_requisition_from_sale_order.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model,name:phi_requisition_from_sale_order.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
