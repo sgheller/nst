@@ -36,7 +36,7 @@ class Office365SettingModel(models.TransientModel):
     def _get_current_url(self):
         for i in self:
             base_url = request.httprequest.url_root
-            base_url = base_url[:4] + 's' + base_url[4:]
+            base_url = base_url[:4] + base_url[4:]
             i.redirect_url = base_url+'odoo'
 
     def get_log(self):
