@@ -21,8 +21,10 @@ class AccountIncoterms(models.Model):
         desciption = False
         if self.code in ('EXW', 'FCA'):
             if start_adddress:
-                desciption = ",".join([start_adddress.city, start_adddress.zip, start_adddress.country_id.name])
+                if start_adddress.city and start_adddress.zip and start_adddress.country_id:
+                    desciption = ", ".join([start_adddress.city, start_adddress.zip, start_adddress.country_id.name])
         if self.code in ('DPU', 'DAP', 'DDP'):
             if end_address:
-                desciption = ",".join([end_address.city, end_address.zip, end_address.country_id.name])
+                if end_address.city and end_address.zip and end_address.country_id:
+                    desciption = ", ".join([end_address.city, end_address.zip, end_address.country_id.name])
         return desciption
