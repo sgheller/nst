@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-    <template id="report_saleorder_document_inherit_sale_stock" inherit_id="sale.report_saleorder_document">
+    <template id="report_saleorder_document_inherit_sale_stock_nexans" inherit_id="sale.report_saleorder_document">
         <xpath expr="//div[@name='expiration_date']" position="after">
             <div class="col-3" t-if="doc.indice_meps" >
                 <strong>Indice MEPS:</strong>
