@@ -13,7 +13,7 @@
     'author': "Phidias",
     'website': "http://www.phidias.fr",
     'category': 'Uncategorized',
-    'version': '14.0.0.11',
+    'version': '14.0.0.12',
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -60,6 +60,7 @@
         'sales_delivery_date',
         'phi_incoterm_description',
         'sale_quotation_number',
+        'phi_purchase_quotation_number',
     ],
     "data": [
         'views/crm_lead_views.xml',
