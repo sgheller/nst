@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="supplier_info_form_perqty">
+            <field name="name">product.supplierinfo.perqty.view</field>
+            <field name="model">product.supplierinfo</field>
+            <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+            <field name="arch" type="xml">
+                <field name="product_id" position="after">
+                    <field name="qty_multiple"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="product_supplierinfo_view_form_perqty" model="ir.ui.view">
+            <field name="name">product.supplierinfo.view.form.perqty</field>
+            <field name="model">product.supplierinfo</field>
+            <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="qty_multiple" optional="hide"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_supplierinfo_tree_purchase_perqty" model="ir.ui.view">
+            <field name="name">product.supplierinfo.tree.perqty</field>
+            <field name="model">product.supplierinfo</field>
+            <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='price']" position="after">
+                <field name="qty_multiple" optional="hide" />
+              </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
