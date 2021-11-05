@@ -13,4 +13,5 @@ class SaleOrderLine(models.Model):
         for line in self:
             if line.purchase_price:
                 line.price_unit = line.purchase_price / ( 1 - line.margin_percent) if (line.margin_percent - 1) else line.purchase_price
-            #line.margin = line.price_subtotal - (line.purchase_price * line.product_uom_qty)
+                line._compute_amount()
+                line.margin = line.price_subtotal - (line.purchase_price * line.product_uom_qty)
