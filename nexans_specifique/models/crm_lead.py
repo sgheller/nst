@@ -9,7 +9,9 @@ class CrmLead(models.Model):
     account_analytic_id = fields.Many2one('account.analytic.account', string='Compte Analytique', store=True, readonly=True)
     stage_id = fields.Many2one(
         'crm.stage', string='Stage', index=True, tracking=True,
-        compute='_compute_stage_id', readonly=True, store=True,
+        compute='_compute_stage_id',
+        #readonly=True,
+        store=True,
         copy=False, group_expand='_read_group_stage_ids', ondelete='restrict',
         domain="['|', ('team_id', '=', False), ('team_id', '=', team_id)]")
 
