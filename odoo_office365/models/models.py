@@ -137,7 +137,7 @@ class CustomMessage(models.Model):
                         })
 
                     message = super(CustomMessage, self).create(values)
-                    # message.email_from = None
+                    message.email_from = None
 
                     if conv_id:
                         message.office_id = conv_id
