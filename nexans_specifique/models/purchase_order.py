@@ -9,6 +9,20 @@ from odoo.exceptions import AccessError
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
+    product_attachment_nb = fields.Integer("Product Attachment #", compute="_compute_product_attachment_nb")
+
+    def _compute_product_attachment_nb(self):
+        for order in self:
+            products = order.mapped('order_line.product_id')
+            attachments = self.env['ir.attachment'].search(
+                [
+                    '|', '&',
+                    ('res_model', 'in', ['product.product']),
+                    ('res_id', 'in', products.ids),'&',('res_model', 'in', ['product.template']),
+                    ('res_id', 'in', products.mapped('product_tmpl_id').ids)
+                ])
+            order.product_attachment_nb = len(attachments)
+
     def _add_supplier_to_product(self):
         # Add the partner in the supplier list of the product if the supplier is not registered for
         # this product. We limit to 10 the number of suppliers for a product to avoid the mess that
