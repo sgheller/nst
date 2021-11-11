@@ -1,0 +1,249 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nexans_specifique
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-11 11:05+0000\n"
+"PO-Revision-Date: 2021-11-11 11:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_delivery_nexans
+msgid "<span>Country Name</span>"
+msgstr "<span>Pays</span>"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_delivery_nexans
+msgid "<span>Net Weight</span>"
+msgstr "<span>Poids Net</span>"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_delivery_nexans
+msgid "<strong>Carrier:</strong>"
+msgstr "<strong>Transporteur:</strong>"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_delivery_nexans
+msgid "<strong>Commercial invoice:</strong>"
+msgstr "<strong>Facture Commerciale:</strong>"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_delivery_nexans
+msgid "<strong>Country</strong>"
+msgstr "<strong>Pays</strong>"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_saleorder_document_inherit_sale_stock_nexans
+msgid "<strong>Indice MEPS:</strong>"
+msgstr ""
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_delivery_nexans
+msgid "<strong>Net Weight</strong>"
+msgstr "<strong>Poids Net</strong>"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_delivery_nexans
+msgid "<strong>Order customer ref:</strong>"
+msgstr "<strong>N° commande client:</strong>"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_delivery_nexans
+msgid "<strong>Unit quantity:</strong>"
+msgstr "<strong>Quantité produit:</strong>"
+
+#. module: nexans_specifique
+#: model:studio.approval.rule,message:nexans_specifique.approval_opportunity_lost
+msgid "Approbation perte de l'opportunité"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:studio.approval.rule,message:nexans_specifique.approval_opportunity_next
+msgid "Approbation pour avancement dans le workflow"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:studio.approval.rule,message:nexans_specifique.approval_sale_order_confirm
+msgid "Approbation pour confirmation de la commande"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:studio.approval.rule,message:nexans_specifique.approval_opportunity_convert
+msgid "Approbation pour conversion de la piste en opportunité"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:studio.approval.rule,message:nexans_specifique.approval_opportunity_previous
+msgid "Approbation pour reculer dans le workflow"
+msgstr ""
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.crm_case_form_view_nexans
+msgid "Cash Flow"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:ir.model,name:nexans_specifique.model_phi_cash_flow_analytic_cashflow_report
+msgid "Cash Flow Report"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_picking__commercial_invoice
+msgid "Commercial invoice"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_crm_lead__account_analytic_id
+msgid "Compte Analytique"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:nexans_specifique.field_phi_cash_flow_analytic_cashflow_report__display_name
+#: model:ir.model.fields,field_description:nexans_specifique.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:nexans_specifique.field_sale_order__display_name
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move__display_name
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move_line__display_name
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_quant_package__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move_line__weight_gross_print
+msgid "Gross Weight"
+msgstr "Poids Brut"
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_crm_lead__id
+#: model:ir.model.fields,field_description:nexans_specifique.field_phi_cash_flow_analytic_cashflow_report__id
+#: model:ir.model.fields,field_description:nexans_specifique.field_purchase_order__id
+#: model:ir.model.fields,field_description:nexans_specifique.field_sale_order__id
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move__id
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move_line__id
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_picking__id
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_quant_package__id
+msgid "ID"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_sale_order__indice_meps
+msgid "Indice Meps"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_sale_order__purchase_price_index
+msgid "Indice Prix"
+msgstr ""
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.report_delivery_nexans
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.stock_report_delivery_aggregated_move_lines_nexans
+msgid "Kg"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_crm_lead____last_update
+#: model:ir.model.fields,field_description:nexans_specifique.field_phi_cash_flow_analytic_cashflow_report____last_update
+#: model:ir.model.fields,field_description:nexans_specifique.field_purchase_order____last_update
+#: model:ir.model.fields,field_description:nexans_specifique.field_sale_order____last_update
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move____last_update
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move_line____last_update
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_picking____last_update
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_quant_package____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: nexans_specifique
+#: model:ir.model,name:nexans_specifique.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Piste/opportunité"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.crm_case_form_view_nexans
+msgid "Next Stage"
+msgstr "Etape Suivante"
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_picking__package_nb
+msgid "Package #"
+msgstr "N° Colis"
+
+#. module: nexans_specifique
+#: model:ir.model,name:nexans_specifique.model_stock_quant_package
+msgid "Packages"
+msgstr "Colis"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.crm_case_form_view_nexans
+msgid "Previous Stage"
+msgstr "Etape précédente"
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_sale_order__product_attachment_nb
+msgid "Product Attachment #"
+msgstr "Nb Pièces jointes article"
+
+#. module: nexans_specifique
+#: model:ir.model,name:nexans_specifique.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Mouvements d'article (Ligne de mouvement de stock)"
+
+#. module: nexans_specifique
+#: model:ir.model,name:nexans_specifique.model_purchase_order
+msgid "Purchase Order"
+msgstr "Commande fournisseur"
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_picking__sale_order_origin
+msgid "Sale Order Origin"
+msgstr "Commande Client"
+
+#. module: nexans_specifique
+#: model:ir.model,name:nexans_specifique.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_crm_lead__stage_id
+msgid "Stage"
+msgstr "Étape"
+
+#. module: nexans_specifique
+#: model:ir.model,name:nexans_specifique.model_stock_move
+msgid "Stock Move"
+msgstr "Mouvement de stock"
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_sale_order__customer_text
+msgid "Texte Client"
+msgstr ""
+
+#. module: nexans_specifique
+#: model:ir.model,name:nexans_specifique.model_stock_picking
+msgid "Transfer"
+msgstr "Transfert"
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move_line__weight_net
+msgid "Weight"
+msgstr "Poids"
+
+#. module: nexans_specifique
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move__weight_gross
+#: model:ir.model.fields,field_description:nexans_specifique.field_stock_move_line__weight_gross
+msgid "Weight Gross"
+msgstr "Poids Brut"
+
+#. module: nexans_specifique
+#: model_terms:ir.ui.view,arch_db:nexans_specifique.purchase_order_view_form_nexans
+msgid "compte analytique"
+msgstr ""
