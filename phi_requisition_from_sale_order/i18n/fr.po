@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-27 14:24+0000\n"
-"PO-Revision-Date: 2021-08-27 14:24+0000\n"
+"POT-Creation-Date: 2021-11-11 15:44+0000\n"
+"PO-Revision-Date: 2021-11-11 15:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,16 +27,46 @@ msgid "Active Requisition"
 msgstr "Appel d'offre en cours"
 
 #. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_purchase_requisition_add_products
+msgid "Add"
+msgstr "Ajouter"
+
+#. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_purchase_requisition_add_products
+msgid "Add  Lines"
+msgstr "Ajouter Lignes"
+
+#. module: phi_requisition_from_sale_order
+#: code:addons/phi_requisition_from_sale_order/models/purchase_requisition.py:0
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_purchase_requisition_form_requisition_from_sale_order
+#, python-format
+msgid "Add Products"
+msgstr "Ajouter Articles"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.actions.act_window,name:phi_requisition_from_sale_order.action_purchase_requisition_add_products
+msgid "Add products"
+msgstr "Ajouter Articles"
+
+#. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_purchase_requisition_add_products
 #: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_sale_requisition_generate
 msgid "Cancel"
 msgstr "Annuler"
 
 #. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition__account_analytic_id
+msgid "Compte Analytique"
+msgstr ""
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_add_products__create_uid
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_add_products__create_date
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__create_date
 msgid "Created on"
 msgstr ""
@@ -44,6 +74,7 @@ msgstr ""
 #. module: phi_requisition_from_sale_order
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_product_product__display_name
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition__display_name
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_add_products__display_name
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__display_name
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order__display_name
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order_line__display_name
@@ -67,6 +98,11 @@ msgid "Generate Sale Requisition"
 msgstr "Générer appel d'offre"
 
 #. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_purchase_requisition_form_requisition_from_sale_order
+msgid "Generate orders"
+msgstr "Créer demande de prix"
+
+#. module: phi_requisition_from_sale_order
 #: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_order_form_requisition_from_sale_order
 msgid "Generate requisition"
 msgstr "Générer appel d'offre"
@@ -80,6 +116,7 @@ msgstr "Générer appel d'offre depuis la commande de vente"
 #. module: phi_requisition_from_sale_order
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_product_product__id
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition__id
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_add_products__id
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__id
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order__id
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order_line__id
@@ -89,6 +126,7 @@ msgstr ""
 #. module: phi_requisition_from_sale_order
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_product_product____last_update
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition____last_update
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_add_products____last_update
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate____last_update
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order____last_update
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order_line____last_update
@@ -96,11 +134,13 @@ msgid "Last Modified on"
 msgstr "Dernière modification le"
 
 #. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_add_products__write_uid
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: phi_requisition_from_sale_order
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_add_products__write_date
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__write_date
 msgid "Last Updated on"
 msgstr ""
@@ -116,14 +156,21 @@ msgid "Last purchase date"
 msgstr "Dernière date d'achat"
 
 #. module: phi_requisition_from_sale_order
-#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__lines_ids
-msgid "Lines"
-msgstr "Lignes"
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_product_product__vendor_count
+msgid "Nb Vendors"
+msgstr ""
 
 #. module: phi_requisition_from_sale_order
 #: model:ir.model,name:phi_requisition_from_sale_order.model_product_product
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_add_products__product_ids
+#: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_purchase_requisition_requisition_generate__product_ids
 msgid "Product"
 msgstr "Article"
+
+#. module: phi_requisition_from_sale_order
+#: model_terms:ir.ui.view,arch_db:phi_requisition_from_sale_order.view_purchase_requisition_add_products
+msgid "Products"
+msgstr "Articles"
 
 #. module: phi_requisition_from_sale_order
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order__requisition_ids
@@ -134,6 +181,11 @@ msgstr "Appel d'offre"
 #: model:ir.model,name:phi_requisition_from_sale_order.model_purchase_requisition
 msgid "Purchase Requisition"
 msgstr "Appel d'offres"
+
+#. module: phi_requisition_from_sale_order
+#: model:ir.model,name:phi_requisition_from_sale_order.model_purchase_requisition_add_products
+msgid "Requisition add products"
+msgstr ""
 
 #. module: phi_requisition_from_sale_order
 #: model:ir.model.fields,field_description:phi_requisition_from_sale_order.field_sale_order__requisitions_count
