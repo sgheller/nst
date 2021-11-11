@@ -13,7 +13,7 @@
     'author': "Phidias",
     'website': "http://www.phidias.fr",
     'category': 'Uncategorized',
-    'version': '14.0.0.13',
+    'version': '14.0.0.14',
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -69,5 +69,7 @@
         'data/approbation_rule.xml',
         'views/sale_order_views.xml',
         'report/sale_order_report_templates.xml',
+        'report/report_deliveryslip.xml',
+        'views/stock_picking_views.xml',
     ]
 }
