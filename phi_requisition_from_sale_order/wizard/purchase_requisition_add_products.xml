@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_purchase_requisition_add_products" model="ir.ui.view">
+            <field name="name">purchase.requisition.add.products.form</field>
+            <field name="model">purchase.requisition.add.products</field>
+            <field name="arch" type="xml">
+                <form string="Add  Lines">
+                    <field name="product_ids" domain="[('purchase_ok', '=', True)]">
+                        <tree string="Products">
+                            <field name="default_code" readonly="1"/>
+                            <field name="name" readonly="1"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button string='Add' name="select_lines" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_purchase_requisition_add_products" model="ir.actions.act_window">
+            <field name="name">Add products</field>
+            <field name="res_model">purchase.requisition.add.products</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_purchase_requisition_add_products"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

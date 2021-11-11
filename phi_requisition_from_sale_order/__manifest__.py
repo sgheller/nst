@@ -13,7 +13,7 @@
     'author': "Phidias",
     'website': "http://www.phidias.fr",
     'category': 'Uncategorized',
-    'version': '14.0.0.2',
+    'version': '14.0.0.3',
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -27,5 +27,6 @@
         'views/purchase_requisition_views.xml',
         'wizard/sale_requisition_generate_view.xml',
         'security/ir.model.access.csv',
+        'wizard/purchase_requisition_add_products.xml',
     ]
 }
