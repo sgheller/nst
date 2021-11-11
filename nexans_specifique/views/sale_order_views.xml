@@ -26,6 +26,9 @@
                     <field name="customer_text"/>
                 </group>
             </xpath>
+            <xpath expr="//field[@name='indice_meps']" position="after">
+                <field name="product_attachment_nb"/>
+            </xpath>
         </field>
     </record>
 </odoo>
