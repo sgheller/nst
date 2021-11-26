@@ -62,7 +62,7 @@
         'sale_quotation_number',
         'phi_purchase_quotation_number',
         'phi_purchase_supplierinfo_perqty',
-        'account_move_csv_import',
+        #'account_move_csv_import',
     ],
     "data": [
         'views/crm_lead_views.xml',
