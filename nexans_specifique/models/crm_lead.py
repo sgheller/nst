@@ -10,7 +10,7 @@ class CrmLead(models.Model):
     stage_id = fields.Many2one(
         'crm.stage', string='Stage', index=True, tracking=True,
         compute='_compute_stage_id',
-        #readonly=True,
+        readonly=True,
         store=True,
         copy=False, group_expand='_read_group_stage_ids', ondelete='restrict',
         domain="['|', ('team_id', '=', False), ('team_id', '=', team_id)]")
@@ -25,10 +25,15 @@ class CrmLead(models.Model):
 
     def action_next(self):
         self.ensure_one()
-        next_stage_id = self.env['crm.stage'].search(['|', ('team_id', '=', False), ('team_id', '=', self.team_id.id), ('sequence', '>', self.stage_id.sequence)],
-                                                     order='sequence', limit=1)
+        next_stage_id = self.get_next_stage()
         if next_stage_id:
             self.stage_id = next_stage_id
+
+    def get_next_stage(self):
+        next_stage_id = self.env['crm.stage'].search(['|', ('team_id', '=', False), ('team_id', '=', self.team_id.id),
+                                                      ('sequence', '>', self.stage_id.sequence)],
+                                                     order='sequence', limit=1)
+        return next_stage_id
 
     def write(self, values):
         if not self.account_analytic_id and values.get('account_analytic_id') == None:
@@ -62,3 +67,9 @@ class CrmLead(models.Model):
         for lead in self:
             if lead.account_analytic_id and not lead.account_analytic_id.active:
                 lead.account_analytic_id.toggle_active()
+
+
+class Stage(models.Model):
+    _inherit = "crm.stage"
+
+    user_id = fields.Many2one('res.users', 'Approver')
