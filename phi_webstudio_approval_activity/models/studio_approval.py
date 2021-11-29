@@ -17,19 +17,31 @@ class StudioApprovalRule(models.Model):
         if not res.get("approved"):
             rule = self.env['studio.approval.rule'].browse(res["rules"][0]['id'])
             if rule:
-                existing_activity = self.env['mail.activity'].search([
+                existing_activity = self.env['mail.activity'].sudo().search([
                     ('res_id', '=', res_id),
                     ('res_model_id', '=', rule.model_id.id),
                     ('activity_type_id', '=', self.env.ref('mail.mail_activity_data_todo').id),
                     ('rule_approval', '=', rule.id)])
                 if not existing_activity:
-                    if len(rule.group_id.users):
-                        self.env['mail.activity'].create({
+                    user_id = False
+                    if model == 'crm.lead':
+                        lead = self.env[model].browse(res_id)
+                        next_stage = lead.get_next_stage()
+                        if next_stage.user_id:
+                            user_id = next_stage.user_id
+                        else:
+                            if len(rule.group_id.users):
+                                user_id = rule.group_id.users[0]
+                    else:
+                        if len(rule.group_id.users):
+                            user_id = rule.group_id.users[0]
+                    if user_id:
+                        self.env['mail.activity'].sudo().create({
                             'summary': rule.message,
                             'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
                             'res_model_id': rule.model_id.id,
                             'res_id': res_id,
-                            'user_id': rule.group_id.users[0].id,
+                            'user_id': user_id.id,
                             'rule_approval': rule.id,
                         })
         else:
