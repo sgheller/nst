@@ -97,3 +97,23 @@ class PurchaseOrder(models.Model):
                                 line.product_id.write(vals)
             except AccessError:  # no write access rights -> just ignore
                 break
+
+
+class PurchaseOrderLine(models.Model):
+    _inherit = "purchase.order.line"
+
+    def _get_product_purchase_description(self, product_lang):
+        self.ensure_one()
+        name = product_lang.display_name
+        if self.env.context.get('partner_id'):
+            supplier_info = self.env['product.supplierinfo'].sudo().search([
+                ('product_tmpl_id', '=', product_lang.product_tmpl_id.id),
+                ('name', '=', self.env.context.get('partner_id')),
+            ])
+            if supplier_info:
+                name = '[%s] %s ' % (supplier_info.product_code or product_lang.defeult_code, supplier_info.product_name or product_lang.name)
+                return name
+        if product_lang.description_purchase:
+            name += '\n' + product_lang.description_purchase
+
+        return name
