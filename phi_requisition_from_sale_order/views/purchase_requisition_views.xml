@@ -4,18 +4,30 @@
         <record id="view_purchase_requisition_form_requisition_from_sale_order" model="ir.ui.view">
             <field name="name">purchase.requisition.form.requisition_from_sale_order</field>
             <field name="model">purchase.requisition</field>
-            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form" />
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
             <field name="arch" type="xml">
-                 <xpath expr="//header" position="inside">
-                    <button name="generate_default_purchase_orders" string="Generate orders" class="btn btn-secondary" type="object" attrs="{'invisible': ['|',('order_count','!=', 0),('state','!=', 'in_progress')]}"/>
-                    <button name="purchase_requisition_add_products" string="Add Products" class="btn btn-secondary" type="object" attrs="{'invisible': [('state','!=', 'draft')]}"/>
+                <xpath expr="//header" position="inside">
+                    <button name="generate_default_purchase_orders" string="Generate orders" class="btn btn-secondary"
+                            type="object"
+                            attrs="{'invisible': ['|',('order_count','!=', 0),('state','!=', 'in_progress')]}"/>
+                    <button name="purchase_requisition_add_products" string="Add Products" class="btn btn-secondary"
+                            type="object" attrs="{'invisible': [('state','!=', 'draft')]}"/>
                 </xpath>
                 <field name="origin" position="after">
                     <field name="sale_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                 </field>
-                  <xpath expr="//field[@name='date_end']" position="before">
+                <xpath expr="//field[@name='date_end']" position="before">
                     <field name="account_analytic_id"/>
-                  </xpath>
+                </xpath>
+                <xpath expr="//field[@name='type_id']" position="after">
+                    <field name="partner_ids" widget="many2many_tags_avatar"/>
+                </xpath>
+                <xpath expr="//field[@name='vendor_id']" position="attributes">
+                    <attribute name="attrs">{"readonly": [["state","in",["ongoing","done"]]], "required":
+                        [["is_quantity_copy","=","none"]]}
+                    </attribute>
+                    <attribute name="invisible">1</attribute>
+                </xpath>
             </field>
         </record>
     </data>
