@@ -29,8 +29,8 @@ class PurchaseRequisition(models.Model):
     def generate_default_purchase_orders(self):
         self.ensure_one()
         for line in self.line_ids:
-            if self.vendor_ids:
-                vendors = self.vendor_ids
+            if len(self.partner_ids):
+                vendors = self.partner_ids.filtered(lambda p: p.id in line.product_id.seller_ids.mapped('name').ids)
             else:
                 vendors = line.product_id.seller_ids.mapped('name')
             for vendor in vendors:
