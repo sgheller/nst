@@ -9,7 +9,6 @@
                     <field name="product_ids">
                         <tree string="Sale Order Lines" create="false" edit="false">
                             <field name="name" readonly="1"/>
-<!--                            <field name="requisition_qty" readonly="1"/>-->
                              <field name="purchase_last_date" readonly="1"/>
                              <field name="purchase_last_partner_id" readonly="1"/>
                             <field name="current_requisition" readonly="1"/>
