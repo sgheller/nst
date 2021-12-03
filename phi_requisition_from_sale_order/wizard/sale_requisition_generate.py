@@ -38,9 +38,9 @@ class SaleRequisitionGenerate(models.TransientModel):
                         for component in components['lines']:
                             product_component = self.env['product.product'].browse(component['prod_id'])
                             if product_component in lines:
-                                lines[product_component] += line.product_uom_qty
+                                lines[product_component] += component.get('quantity')
                             else:
-                                lines[product_component] = line.product_uom_qty
+                                lines[product_component] = component.get('quantity')
 
         return lines
 
@@ -50,7 +50,7 @@ class SaleRequisitionGenerate(models.TransientModel):
         products_all = self._get_products(sale_order)
         for record in self:
             # create requisition
-            products = record.product_ids.filtered(lambda t: t.seller_ids)
+            products = record.product_ids
             if len(products):
                 purchase_vals = {
                     'type_id': self.env.ref('purchase_requisition.type_multi').id,

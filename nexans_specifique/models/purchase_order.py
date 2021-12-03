@@ -31,7 +31,7 @@ class PurchaseOrder(models.Model):
             # Do not add a contact as a supplier
             try:
                 partner = self.partner_id if not self.partner_id.parent_id else self.partner_id.parent_id
-                if line.product_id and partner:
+                if line.product_id and partner and line.price_unit:
                     # Convert the price in the right currency.
                     currency = partner.property_purchase_currency_id or self.env.company.currency_id
                     price = self.currency_id._convert(line.price_unit, currency, line.company_id, line.date_order or fields.Date.today(), round=False)
@@ -95,6 +95,7 @@ class PurchaseOrder(models.Model):
                                     'seller_ids': [(0, 0, supplierinfo)],
                                 }
                                 line.product_id.write(vals)
+                line.product_id.product_tmpl_id._compute_standard_price()
             except AccessError:  # no write access rights -> just ignore
                 break
 
