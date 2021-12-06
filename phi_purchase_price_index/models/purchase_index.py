@@ -27,8 +27,8 @@ class PurchaseIndex(models.Model):
     @api.model
     def create(self, vals):
         index_draft = self.env["phi_purchase_price_index.purchase.index"].search([('state', '=', 'draft')])
-        if len(index_draft) > 0:
-            raise UserError(_('Il existe un autre index en brouillon, vous devez le valider avant de créer un nouvel index.'))
+        # if len(index_draft) > 0:
+        #     raise UserError(_('Il existe un autre index en brouillon, vous devez le valider avant de créer un nouvel index.'))
         current_index = self._get_current_index()
         if isinstance(vals["date_from"], str):
             date = datetime.strptime(vals["date_from"], '%Y-%m-%d').date()
@@ -86,6 +86,10 @@ class PurchaseIndex(models.Model):
         return self.env["phi_purchase_price_index.purchase.index"].search([('date_from', '<=', date),('state', '=', 'done')], order='date_from desc', limit=1)
 
     def action_apply(self):
+        index_draft = self.env["phi_purchase_price_index.purchase.index"].search([('state', '=', 'draft'),('date_from', '<', self.date_from)])
+        if len(index_draft) > 0:
+            raise UserError(_('Il existe un index en brouillon avec une date anterieure.'))
+        current_index = self._get_current_index()
         products_index = self.env["product.template"].search([('purchase_price_index', '=', True)])
         for product in products_index:
             new_cost = 0
