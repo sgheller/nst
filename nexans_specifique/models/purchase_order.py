@@ -112,7 +112,7 @@ class PurchaseOrderLine(models.Model):
                 ('name', '=', self.env.context.get('partner_id')),
             ])
             if supplier_info:
-                name = '[%s] %s ' % (supplier_info.product_code or product_lang.defeult_code, supplier_info.product_name or product_lang.name)
+                name = '[%s] %s ' % (supplier_info.product_code or product_lang.default_code, supplier_info.product_name or product_lang.name)
                 return name
         if product_lang.description_purchase:
             name += '\n' + product_lang.description_purchase
