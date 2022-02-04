@@ -13,7 +13,7 @@
     'author': "Phidias",
     'website': "http://www.phidias.fr",
     'category': 'Uncategorized',
-    'version': '14.0.0.24',
+    'version': '14.0.0.25',
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -62,7 +62,7 @@
         'sale_quotation_number',
         'phi_purchase_quotation_number',
         'phi_purchase_supplierinfo_perqty',
-        #'account_move_csv_import',
+        'account_move_csv_import',
         'purchase_vendorbill_advance',
         'purchase_force_invoiced',
         'sale_force_invoiced',
