@@ -110,7 +110,7 @@ class PurchaseOrderLine(models.Model):
             supplier_info = self.env['product.supplierinfo'].sudo().search([
                 ('product_tmpl_id', '=', product_lang.product_tmpl_id.id),
                 ('name', '=', self.env.context.get('partner_id')),
-            ])
+            ], limit=1)
             if supplier_info:
                 name = '[%s] %s ' % (supplier_info.product_code or product_lang.default_code, supplier_info.product_name or product_lang.name)
                 return name
